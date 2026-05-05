@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peak Fiction — Cultura Pop, Cinema & Colecionáveis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --pf-red:         #E50914;
+      --pf-red-dark:    #B20710;
+      --pf-red-glow:    rgba(229, 9, 20, 0.25);
+      --pf-black:       #000000;
+      --pf-dark:        #141414;
+      --pf-dark-2:      #1a1a1a;
+      --pf-dark-3:      #221f1f;
+      --pf-dark-4:      #2f2f2f;
+      --pf-white:       #FFFFFF;
+      --pf-gray-light:  #e5e5e5;
+      --pf-gray-mid:    #b3b3b3;
+      --pf-gray-muted:  #757575;
+      --pf-gold:        #f5c518;
+      --pf-gold-dark:   #d4a017;
+      --pf-gradient-hero: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 40%, rgba(20,20,20,0.85) 75%, #141414 100%);
+      --pf-gradient-card: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+      --font-display: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-ui:      'Barlow Condensed', sans-serif;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--pf-dark); color: var(--pf-gray-light); overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; outline: none; font-family: var(--font-body); background: transparent; }
+    ul { list-style: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: sticky; top: 0; z-index: 1000;
+      padding: 0 48px; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(20,20,20,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(229,9,20,0.2);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 30px; letter-spacing: 0.06em;
+      color: var(--pf-red);
+      text-shadow: 0 0 24px rgba(229,9,20,0.45);
+      height: 36px; display: flex; align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--pf-gray-light); letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--pf-white); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-icon-btn {
+      color: var(--pf-gray-light); font-size: 17px;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, background 0.2s; position: relative;
+    }
+    .nav-icon-btn:hover { color: var(--pf-white); background: rgba(255,255,255,0.08); }
+    .cart-badge {
+      position: absolute; top: 4px; right: 4px;
+      background: var(--pf-red); color: white;
+      font-size: 10px; font-weight: 700;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cart-badge.hidden { display: none; }
+    .btn-shopee-nav {
+      background: var(--pf-red); color: white;
+      padding: 8px 18px; border-radius: 4px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s, transform 0.1s;
+      margin-left: 8px;
+    }
+    .btn-shopee-nav:hover { background: var(--pf-red-dark); }
+    .btn-shopee-nav:active { transform: scale(0.98); }
+    .hamburger {
+      display: none; color: var(--pf-white); font-size: 22px;
+      width: 40px; height: 40px; align-items: center; justify-content: center;
+    }
+
+    /* Drawer */
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 1999; opacity: 0; pointer-events: none; transition: opacity 0.35s; }
+    .drawer-overlay.visible { opacity: 1; pointer-events: all; }
+    .nav-drawer { position: fixed; top: 0; right: -300px; width: 280px; height: 100vh; background: var(--pf-dark-3); z-index: 2000; padding: 24px; transition: right 0.35s cubic-bezier(0.25,0.46,0.45,0.94); border-left: 1px solid rgba(229,9,20,0.15); display: flex; flex-direction: column; gap: 0; }
+    .nav-drawer.open { right: 0; }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+    .drawer-logo { font-family: var(--font-display); font-size: 24px; color: var(--pf-red); letter-spacing: 0.06em; }
+    .drawer-close { color: var(--pf-gray-mid); font-size: 20px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; }
+    .drawer-close:hover { background: rgba(255,255,255,0.08); }
+    .drawer-links { display: flex; flex-direction: column; gap: 8px; }
+    .drawer-links a { font-family: var(--font-display); font-size: 32px; color: var(--pf-gray-light); letter-spacing: 0.05em; padding: 8px 0; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .drawer-links a:hover { color: var(--pf-red); }
+    .drawer-shopee { margin-top: 40px; background: var(--pf-red); color: white; padding: 14px; border-radius: 6px; font-weight: 700; letter-spacing: 0.08em; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; }
+
+    /* ===== HERO ===== */
+    #hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: -68px; }
+    .hero-bg { position: absolute; inset: 0; display: flex; gap: 6px; overflow: hidden; }
+    .poster-col { display: flex; flex-direction: column; gap: 6px; flex: 1; will-change: transform; }
+    .poster-col:nth-child(odd)  { animation: scrollDown 80s linear infinite; }
+    .poster-col:nth-child(even) { animation: scrollUp  90s linear infinite; }
+    @keyframes scrollDown { from { transform: translateY(0);    } to { transform: translateY(-50%); } }
+    @keyframes scrollUp   { from { transform: translateY(-50%); } to { transform: translateY(0);    } }
+    .poster-item { flex-shrink: 0; width: 100%; aspect-ratio: 2/3; border-radius: 3px; overflow: hidden; }
+    .poster-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
+    .hero-overlay { position: absolute; inset: 0; background: var(--pf-gradient-hero); }
+    .hero-tint    { position: absolute; inset: 0; background: rgba(229,9,20,0.04); }
+    .hero-content { position: relative; z-index: 10; text-align: center; padding: 0 24px; max-width: 840px; }
+    .hero-tag { font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pf-red); margin-bottom: 20px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s 0.1s forwards; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(72px, 11vw, 120px); color: var(--pf-white); line-height: 0.88; letter-spacing: 0.02em; margin-bottom: 24px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s 0.2s forwards; }
+    .hero-subtitle { font-size: clamp(15px, 2vw, 20px); font-weight: 400; color: var(--pf-gray-mid); margin-bottom: 28px; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s 0.3s forwards; }
+    .hero-divider { width: 60px; height: 2px; background: var(--pf-red); margin: 0 auto 36px; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s 0.5s forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .scroll-indicator { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.35); font-size: 22px; z-index: 10; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);opacity:.35} 50%{transform:translateX(-50%) translateY(8px);opacity:.75} }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary { background: var(--pf-red); color: white; padding: 16px 44px; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; border-radius: 4px; transition: background 0.2s, transform 0.1s; display: inline-block; text-align: center; }
+    .btn-primary:hover { background: var(--pf-red-dark); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-outline { background: transparent; color: white; padding: 15px 44px; font-size: 15px; font-weight: 600; letter-spacing: 0.05em; border-radius: 4px; border: 2px solid rgba(255,255,255,0.45); transition: border-color 0.2s, background 0.2s; display: inline-block; text-align: center; }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+    /* ===== SECTION COMMONS ===== */
+    section { padding: 80px 48px; }
+    .section-tag { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pf-red); margin-bottom: 10px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 54px); color: var(--pf-white); letter-spacing: 0.02em; line-height: 1; }
+    .section-subtitle { font-size: 16px; color: var(--pf-gray-mid); margin-top: 10px; }
+    .section-header { margin-bottom: 48px; }
+    .animate-target { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .animate-target.animated { opacity: 1; transform: none; }
+
+    /* ===== FEATURED (Section 2) ===== */
+    #featured { padding: 0; position: relative; height: 520px; overflow: hidden; background: var(--pf-black); }
+    .featured-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s ease; display: flex; align-items: center; pointer-events: none; }
+    .featured-slide.active { opacity: 1; pointer-events: all; }
+    .featured-bg { position: absolute; inset: 0; }
+    .featured-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center right; }
+    .featured-gradient { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,0.88) 35%, rgba(20,20,20,0.4) 65%, transparent 100%); }
+    .featured-content { position: relative; z-index: 2; padding: 0 64px; max-width: 560px; }
+    .featured-badge { display: inline-block; font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: white; background: var(--pf-red); padding: 4px 12px; border-radius: 2px; margin-bottom: 18px; }
+    .featured-title { font-family: var(--font-display); font-size: clamp(32px,4vw,54px); color: white; line-height: 1; margin-bottom: 14px; }
+    .featured-desc { font-size: 15px; color: var(--pf-gray-mid); margin-bottom: 18px; line-height: 1.75; }
+    .featured-price { font-size: 34px; font-weight: 900; color: white; margin-bottom: 28px; }
+    .featured-price del { font-size: 16px; color: var(--pf-gray-muted); font-weight: 400; margin-left: 12px; }
+    .featured-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .featured-dots { position: absolute; bottom: 28px; left: 64px; display: flex; gap: 8px; z-index: 3; }
+    .featured-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; }
+    .featured-dot.active { background: var(--pf-red); transform: scale(1.35); }
+
+    /* ===== CATEGORIES (Section 3) ===== */
+    #categories { background: var(--pf-dark); }
+    .categories-scroll { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; scrollbar-color: var(--pf-red) var(--pf-dark-2); }
+    .category-card { flex-shrink: 0; width: 180px; height: 240px; border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid rgba(255,255,255,0.06); }
+    .cat-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .category-card:hover .cat-img { transform: scale(1.06); }
+    .cat-overlay { position: absolute; inset: 0; background: var(--pf-gradient-card); }
+    .cat-border { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--pf-red); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+    .category-card:hover .cat-border { transform: scaleX(1); }
+    .cat-label { position: absolute; bottom: 20px; left: 16px; right: 16px; font-family: var(--font-ui); font-size: 15px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: white; }
+    .cat-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); font-size: 48px; color: rgba(255,255,255,0.15); }
+
+    /* ===== FILTER PILLS ===== */
+    .filter-pills { display: flex; gap: 10px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-pill { background: var(--pf-dark-2); color: var(--pf-gray-mid); border: 1px solid var(--pf-dark-4); padding: 8px 20px; border-radius: 20px; font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .filter-pill:hover, .filter-pill.active { background: var(--pf-red); color: white; border-color: var(--pf-red); }
+
+    /* ===== PRODUCTS GRID ===== */
+    #products, #bestsellers { background: var(--pf-dark); }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    /* ===== PRODUCT CARD ===== */
+    .product-card { background: var(--pf-dark-2); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s ease; cursor: pointer; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(229,9,20,0.2), 0 2px 12px rgba(0,0,0,0.7); }
+    .pc-img-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--pf-dark-3); }
+    .pc-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .product-card:hover .pc-img { transform: scale(1.04); }
+    .pc-badge { position: absolute; top: 12px; left: 12px; font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+    .badge-novo     { background: var(--pf-red); color: white; animation: badgePulse 2s ease-in-out infinite; }
+    .badge-oferta   { background: var(--pf-red); color: white; }
+    .badge-bestseller { background: var(--pf-gold); color: #000; }
+    @keyframes badgePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+    .pc-fav { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; background: rgba(0,0,0,0.65); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--pf-gray-mid); font-size: 15px; opacity: 0; transition: opacity 0.2s, color 0.2s; }
+    .product-card:hover .pc-fav { opacity: 1; }
+    .pc-fav.favorited, .pc-fav:hover { color: var(--pf-red); }
+    .pc-body { padding: 16px; }
+    .pc-cat { font-family: var(--font-ui); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pf-gray-muted); margin-bottom: 6px; }
+    .pc-name { font-size: 14px; font-weight: 600; color: var(--pf-white); margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+    .pc-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+    .stars { color: var(--pf-gold); font-size: 11px; letter-spacing: 1px; }
+    .rating-val { font-size: 12px; color: var(--pf-gray-muted); }
+    .pc-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .price-now { font-size: 19px; font-weight: 900; color: var(--pf-white); }
+    .price-old { font-size: 13px; color: var(--pf-gray-muted); text-decoration: line-through; }
+    .btn-buy { width: 100%; background: var(--pf-red); color: white; padding: 11px; border-radius: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 7px; }
+    .btn-buy:hover { background: var(--pf-red-dark); }
+    .btn-buy:active { transform: scale(0.98); }
+
+    /* ===== BRAND STATEMENT (Section 5) ===== */
+    #brand-statement { background: var(--pf-black); text-align: center; padding: 120px 48px; position: relative; overflow: hidden; }
+    .grain { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; }
+    .brand-decor { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 28px; }
+    .brand-line { width: 80px; height: 2px; background: var(--pf-red); }
+    .brand-tagline { font-family: var(--font-display); font-size: clamp(28px,4.5vw,52px); color: white; margin-bottom: 18px; position: relative; z-index: 1; }
+    .brand-sub { font-size: 16px; color: var(--pf-gray-mid); margin-bottom: 44px; max-width: 440px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+
+    /* ===== VIEW ALL ===== */
+    .view-all-wrap { text-align: center; margin-top: 48px; }
+    .btn-view-all { background: transparent; color: var(--pf-white); border: 1px solid var(--pf-dark-4); padding: 14px 52px; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; border-radius: 4px; transition: border-color 0.2s, background 0.2s; }
+    .btn-view-all:hover { border-color: var(--pf-red); background: rgba(229,9,20,0.08); }
+
+    /* ===== TESTIMONIALS (Section 7) ===== */
+    #testimonials { background: var(--pf-dark-2); }
+    .testi-track { overflow: hidden; }
+    .testi-inner { display: flex; transition: transform 0.5s ease; }
+    .testi-card { flex: 0 0 calc(33.333% - 16px); margin-right: 24px; padding: 28px; background: var(--pf-dark); border-left: 3px solid var(--pf-red); border-radius: 0 10px 10px 0; }
+    .testi-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .testi-avatar { width: 46px; height: 46px; border-radius: 50%; background: var(--pf-red); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 20px; color: white; flex-shrink: 0; }
+    .testi-name { font-weight: 700; color: white; font-size: 15px; }
+    .testi-city { font-size: 13px; color: var(--pf-gray-muted); }
+    .testi-stars { color: var(--pf-gold); font-size: 13px; margin-bottom: 10px; }
+    .testi-text { font-size: 14px; color: var(--pf-gray-mid); line-height: 1.75; }
+    .testi-nav { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+    .testi-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pf-dark-4); transition: background 0.2s; cursor: pointer; }
+    .testi-dot.active { background: var(--pf-red); }
+
+    /* ===== ABOUT (Section 8) ===== */
+    #about { background: var(--pf-dark); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-text { padding-left: 28px; border-left: 3px solid var(--pf-red); }
+    .about-title { font-family: var(--font-display); font-size: clamp(32px,4vw,50px); color: white; margin-bottom: 24px; }
+    .about-body { font-size: 16px; color: var(--pf-gray-mid); line-height: 1.9; }
+    .about-body p { margin-bottom: 20px; }
+    .about-img { border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ===== NEWSLETTER (Section 9) ===== */
+    #newsletter { background: linear-gradient(135deg, #1a0000 0%, #141414 50%, #0a0a0a 100%); text-align: center; position: relative; overflow: hidden; }
+    .nl-glow { position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 350px; height: 350px; background: radial-gradient(circle, rgba(229,9,20,0.18) 0%, transparent 70%); pointer-events: none; }
+    .nl-title { font-family: var(--font-display); font-size: clamp(28px,4vw,46px); color: white; margin-bottom: 12px; position: relative; z-index: 1; }
+    .nl-sub { font-size: 16px; color: var(--pf-gray-mid); margin-bottom: 40px; max-width: 440px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+    .nl-form { display: flex; max-width: 480px; margin: 0 auto 18px; border-radius: 4px; overflow: hidden; border: 1px solid var(--pf-dark-4); position: relative; z-index: 1; }
+    .nl-input { flex: 1; background: var(--pf-dark-2); border: none; padding: 16px 20px; font-size: 15px; color: white; font-family: var(--font-body); outline: none; }
+    .nl-input::placeholder { color: var(--pf-gray-muted); }
+    .nl-btn { background: var(--pf-red); color: white; padding: 16px 28px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; white-space: nowrap; transition: background 0.2s; }
+    .nl-btn:hover { background: var(--pf-red-dark); }
+    .nl-lgpd { font-size: 12px; color: var(--pf-gray-muted); display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; z-index: 1; }
+    .nl-lgpd input { accent-color: var(--pf-red); }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--pf-black); border-top: 1px solid rgba(229,9,20,0.15); padding: 64px 48px 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: var(--font-display); font-size: 34px; color: var(--pf-red); letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-tagline { font-size: 14px; color: var(--pf-gray-muted); margin-bottom: 28px; line-height: 1.65; }
+    .social-links { display: flex; gap: 10px; }
+    .social-link { width: 40px; height: 40px; border-radius: 50%; background: var(--pf-dark-2); display: flex; align-items: center; justify-content: center; color: var(--pf-gray-mid); font-size: 15px; transition: background 0.2s, color 0.2s; border: 1px solid var(--pf-dark-4); }
+    .social-link:hover { background: var(--pf-red); color: white; border-color: var(--pf-red); }
+    .footer-col-title { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: white; margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 14px; color: var(--pf-gray-muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pf-red); }
+    .footer-bottom { border-top: 1px solid var(--pf-dark-4); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: var(--pf-gray-muted); }
+
+    /* ===== MODAL ===== */
+    #product-modal { position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.92); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #product-modal.open { opacity: 1; pointer-events: all; }
+    .modal-inner { background: var(--pf-dark-3); border-radius: 16px; overflow: hidden; max-width: 860px; width: 100%; max-height: 90vh; display: grid; grid-template-columns: 1fr 1fr; transform: translateY(28px); transition: transform 0.3s; border: 1px solid rgba(255,255,255,0.08); overflow-y: auto; }
+    #product-modal.open .modal-inner { transform: translateY(0); }
+    .modal-img { width: 100%; min-height: 500px; object-fit: cover; display: block; }
+    .modal-body { padding: 40px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); color: white; display: flex; align-items: center; justify-content: center; font-size: 17px; transition: background 0.2s; }
+    .modal-close:hover { background: var(--pf-red); }
+    .modal-cat { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pf-red); margin-bottom: 10px; }
+    .modal-title { font-family: var(--font-display); font-size: 36px; color: white; margin-bottom: 12px; line-height: 1.05; }
+    .modal-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+    .modal-price { margin-bottom: 18px; }
+    .modal-price-now { font-size: 36px; font-weight: 900; color: white; }
+    .modal-price-old { font-size: 17px; color: var(--pf-gray-muted); text-decoration: line-through; margin-left: 12px; }
+    .modal-desc { font-size: 15px; color: var(--pf-gray-mid); line-height: 1.8; margin-bottom: 20px; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .modal-tag { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--pf-gray-mid); background: var(--pf-dark-4); padding: 4px 12px; border-radius: 12px; }
+    .modal-shipping { display: flex; align-items: center; gap: 10px; padding: 14px 18px; background: var(--pf-dark-2); border-radius: 8px; margin-bottom: 24px; font-size: 14px; color: var(--pf-gray-mid); border: 1px solid var(--pf-dark-4); }
+    .modal-shipping i { color: var(--pf-red); }
+    .modal-divider { height: 1px; background: var(--pf-dark-4); margin: 24px 0; }
+    .btn-modal-buy { width: 100%; background: var(--pf-red); color: white; padding: 16px; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; border-radius: 8px; margin-bottom: 12px; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-modal-buy:hover { background: var(--pf-red-dark); }
+    .btn-modal-fav { width: 100%; background: transparent; color: var(--pf-gray-mid); padding: 14px; font-size: 14px; font-weight: 600; border-radius: 8px; border: 1px solid var(--pf-dark-4); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-modal-fav:hover { border-color: var(--pf-red); color: var(--pf-red); }
+
+    /* ===== SEARCH OVERLAY ===== */
+    #search-overlay { position: fixed; inset: 0; z-index: 2500; background: rgba(0,0,0,0.97); backdrop-filter: blur(8px); display: flex; flex-direction: column; align-items: center; padding-top: 100px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #search-overlay.open { opacity: 1; pointer-events: all; }
+    .search-wrap { display: flex; align-items: center; gap: 14px; width: 100%; max-width: 600px; padding: 0 24px; border-bottom: 2px solid var(--pf-red); margin-bottom: 40px; }
+    .search-wrap i { color: var(--pf-gray-muted); font-size: 20px; }
+    #search-input { flex: 1; background: transparent; border: none; color: white; font-size: 24px; font-family: var(--font-body); padding: 16px 0; outline: none; }
+    #search-input::placeholder { color: var(--pf-gray-muted); }
+    .search-close-btn { color: var(--pf-gray-mid); font-size: 24px; transition: color 0.2s; }
+    .search-close-btn:hover { color: white; }
+    .search-results { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; max-width: 900px; width: 100%; padding: 0 24px; overflow-y: auto; max-height: 55vh; }
+    .search-empty { color: var(--pf-gray-muted); font-size: 16px; text-align: center; padding: 40px; grid-column: 1/-1; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) { .products-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 1024px) {
+      section { padding: 64px 32px; }
+      #navbar { padding: 0 32px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .about-grid { gap: 48px; }
+      .testi-card { flex: 0 0 calc(50% - 12px); }
+    }
+    @media (max-width: 768px) {
+      section { padding: 56px 20px; }
+      #navbar { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .btn-shopee-nav span { display: none; }
+      .products-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { display: none; }
+      .modal-inner { grid-template-columns: 1fr; }
+      .modal-img { min-height: 260px; max-height: 260px; }
+      .featured-content { padding: 0 24px; }
+      .search-results { grid-template-columns: repeat(2,1fr); }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; }
+      footer { padding: 40px 20px 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .testi-card { flex: 0 0 100%; margin-right: 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-bg .poster-col:nth-child(n+4) { display: none; }
+      .featured-price { font-size: 26px; }
+    }
+
+    /* ===== HIDDEN CARD FOR FILTER ===== */
+    .product-card.hidden { display: none; }
+
+    /* ===== NOTIFICATION ===== */
+    .notif { position: fixed; bottom: 32px; right: 32px; background: var(--pf-dark-3); color: white; padding: 14px 22px; border-radius: 8px; border-left: 3px solid var(--pf-red); font-size: 14px; z-index: 9999; transform: translateY(80px); opacity: 0; transition: all 0.35s; pointer-events: none; max-width: 280px; }
+    .notif.show { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" role="navigation" aria-label="Navegação principal">
+  <a href="#inicio" class="nav-logo" aria-label="Peak Fiction - Página Inicial">PEAK FICTION</a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#products">Produtos</a></li>
+    <li><a href="#categories">Coleções</a></li>
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#newsletter">Contato</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" id="search-toggle" aria-label="Abrir busca">
+      <i class="fas fa-search" aria-hidden="true"></i>
+    </button>
+    <button class="nav-icon-btn" id="cart-btn" aria-label="Carrinho de favoritos">
+      <i class="fas fa-heart" aria-hidden="true"></i>
+      <span class="cart-badge hidden" id="cart-count">0</span>
+    </button>
+    <a href="https://shopee.com.br/peakfiction" target="_blank" rel="noopener noreferrer" class="btn-shopee-nav" aria-label="Visitar loja na Shopee">
+      <i class="fas fa-store" aria-hidden="true"></i> <span>SHOPEE</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== MOBILE DRAWER ===== -->
+<div class="drawer-overlay" id="drawer-overlay" role="presentation"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Menu mobile">
+  <div class="drawer-head">
+    <span class="drawer-logo">PEAK FICTION</span>
+    <button class="drawer-close" id="drawer-close" aria-label="Fechar menu">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="#inicio"      class="drawer-nav-link">Início</a></li>
+    <li><a href="#products"    class="drawer-nav-link">Produtos</a></li>
+    <li><a href="#categories"  class="drawer-nav-link">Coleções</a></li>
+    <li><a href="#about"       class="drawer-nav-link">Sobre</a></li>
+    <li><a href="#newsletter"  class="drawer-nav-link">Contato</a></li>
+  </ul>
+  <a href="https://shopee.com.br/peakfiction" target="_blank" rel="noopener" class="drawer-shopee">
+    <i class="fas fa-store"></i> VISITAR SHOPEE
+  </a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="inicio" style="padding:0">
+  <div id="hero" role="banner">
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-tint"    aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Cultura Pop | Colecionáveis | Cinema</p>
+      <h1 class="hero-title">PEAK FICTION</h1>
+      <p class="hero-subtitle">Os produtos que carregam a alma dos seus universos favoritos.</p>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <div class="hero-ctas">
+        <a href="#products" class="btn-primary">EXPLORAR COLEÇÃO</a>
+        <a href="https://shopee.com.br/peakfiction" target="_blank" rel="noopener" class="btn-outline">Ver na Shopee</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
+  </div>
+</section>
+
+<!-- ===== FEATURED (Section 2) ===== -->
+<section id="featured" aria-label="Produtos em destaque">
+  <!-- Slide 1 -->
+  <article class="featured-slide active">
+    <div class="featured-bg">
+      <img src="https://picsum.photos/seed/hp-dobby/1400/520" alt="Dobby Action Figure em destaque" loading="lazy">
+      <div class="featured-gradient" aria-hidden="true"></div>
+    </div>
+    <div class="featured-content">
+      <span class="featured-badge">EM DESTAQUE</span>
+      <h2 class="featured-title">DOBBY ACTION FIGURE</h2>
+      <p class="featured-desc">Um elfo doméstico icônico em detalhes impressionantes. Perfeito para todo fã do mundo bruxo, capturando a expressividade única de Dobby em cada centímetro.</p>
+      <div class="featured-price">R$ 119,90 <del>R$ 159,90</del></div>
+      <div class="featured-ctas">
+        <a href="https://s.shopee.com.br/8fO2DfeJFQ" target="_blank" rel="noopener" class="btn-primary">COMPRAR NA SHOPEE</a>
+        <button class="btn-outline" onclick="openModal(10)" style="cursor:pointer">VER DETALHES</button>
+      </div>
+    </div>
+  </article>
+  <!-- Slide 2 -->
+  <article class="featured-slide">
+    <div class="featured-bg">
+      <img src="https://picsum.photos/seed/hp-kit/1400/520" alt="Hermione e Harry Potter Kit em destaque" loading="lazy">
+      <div class="featured-gradient" aria-hidden="true"></div>
+    </div>
+    <div class="featured-content">
+      <span class="featured-badge">OFERTA ESPECIAL</span>
+      <h2 class="featured-title">KIT HERMIONE & HARRY POTTER</h2>
+      <p class="featured-desc">O presente perfeito para fãs de verdade. Um conjunto exclusivo reunindo os dois bruxos mais amados da história em um presente inesquecível.</p>
+      <div class="featured-price">R$ 149,90 <del>R$ 210,00</del></div>
+      <div class="featured-ctas">
+        <a href="https://s.shopee.com.br/9fGZPVaVDa" target="_blank" rel="noopener" class="btn-primary">COMPRAR NA SHOPEE</a>
+        <button class="btn-outline" onclick="openModal(5)" style="cursor:pointer">VER DETALHES</button>
+      </div>
+    </div>
+  </article>
+  <!-- Slide 3 -->
+  <article class="featured-slide">
+    <div class="featured-bg">
+      <img src="https://picsum.photos/seed/hp-mandragora/1400/520" alt="Mandrágora Bebê Harry Potter em destaque" loading="lazy">
+      <div class="featured-gradient" aria-hidden="true"></div>
+    </div>
+    <div class="featured-content">
+      <span class="featured-badge">MAIS VENDIDO</span>
+      <h2 class="featured-title">MANDRÁGORA BEBÊ</h2>
+      <p class="featured-desc">Diretamente das estufas de Herbologia de Hogwarts. A Mandrágora Bebê é um colecionável encantador com detalhes feitos à mão que vão tirar o fôlego.</p>
+      <div class="featured-price">R$ 79,90</div>
+      <div class="featured-ctas">
+        <a href="https://s.shopee.com.br/165KHKZ5h" target="_blank" rel="noopener" class="btn-primary">COMPRAR NA SHOPEE</a>
+        <button class="btn-outline" onclick="openModal(4)" style="cursor:pointer">VER DETALHES</button>
+      </div>
+    </div>
+  </article>
+  <!-- Dots -->
+  <div class="featured-dots" role="tablist" aria-label="Slides de destaque">
+    <button class="featured-dot active" aria-label="Slide 1" data-slide="0"></button>
+    <button class="featured-dot"        aria-label="Slide 2" data-slide="1"></button>
+    <button class="featured-dot"        aria-label="Slide 3" data-slide="2"></button>
+  </div>
+</section>
+
+<!-- ===== CATEGORIES (Section 3) ===== -->
+<section id="categories">
+  <div class="section-header animate-target">
+    <p class="section-tag">Navegue pelo universo</p>
+    <h2 class="section-title">EXPLORE POR CATEGORIA</h2>
+  </div>
+  <div class="categories-scroll animate-target" role="list">
+    <div class="category-card" role="listitem" onclick="filterCategory('Varinhas')" tabindex="0" aria-label="Categoria Varinhas Mágicas">
+      <img class="cat-img" src="https://picsum.photos/seed/wand-cat/180/240" alt="Varinhas Mágicas" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-magic cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Varinhas Mágicas</span>
+    </div>
+    <div class="category-card" role="listitem" onclick="filterCategory('Figures')" tabindex="0" aria-label="Categoria Action Figures">
+      <img class="cat-img" src="https://picsum.photos/seed/figure-cat/180/240" alt="Action Figures" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-chess-rook cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Action Figures</span>
+    </div>
+    <div class="category-card" role="listitem" onclick="filterCategory('Colecionáveis')" tabindex="0" aria-label="Categoria Colecionáveis">
+      <img class="cat-img" src="https://picsum.photos/seed/collect-cat/180/240" alt="Colecionáveis" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-star cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Colecionáveis</span>
+    </div>
+    <div class="category-card" role="listitem" onclick="filterCategory('Acessórios')" tabindex="0" aria-label="Categoria Acessórios">
+      <img class="cat-img" src="https://picsum.photos/seed/acessory-cat/180/240" alt="Acessórios" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-gem cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Acessórios</span>
+    </div>
+    <div class="category-card" role="listitem" onclick="filterCategory('Conjuntos')" tabindex="0" aria-label="Categoria Conjuntos">
+      <img class="cat-img" src="https://picsum.photos/seed/set-cat/180/240" alt="Conjuntos" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-gift cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Conjuntos</span>
+    </div>
+    <div class="category-card" role="listitem" onclick="filterCategory('Figures')" tabindex="0" aria-label="Categoria Funko Pop">
+      <img class="cat-img" src="https://picsum.photos/seed/funko-cat/180/240" alt="Funko Pop" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-user-astronaut cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Funko Pop</span>
+    </div>
+    <div class="category-card" role="listitem" onclick="filterCategory('Todos')" tabindex="0" aria-label="Ver todos os produtos">
+      <img class="cat-img" src="https://picsum.photos/seed/hp-all-cat/180/240" alt="Harry Potter" loading="lazy">
+      <div class="cat-overlay" aria-hidden="true"></div>
+      <i class="fas fa-hat-wizard cat-icon" aria-hidden="true"></i>
+      <div class="cat-border" aria-hidden="true"></div>
+      <span class="cat-label">Harry Potter</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS (Section 4) ===== -->
+<section id="products">
+  <div class="section-header animate-target">
+    <p class="section-tag">Recém chegados</p>
+    <h2 class="section-title">NOVIDADES</h2>
+    <p class="section-subtitle">Os lançamentos mais esperados da coleção Peak Fiction</p>
+  </div>
+  <div class="filter-pills animate-target" role="group" aria-label="Filtrar produtos">
+    <button class="filter-pill active" data-filter="Todos">Todos</button>
+    <button class="filter-pill" data-filter="Varinhas">Varinhas</button>
+    <button class="filter-pill" data-filter="Figures">Figures</button>
+    <button class="filter-pill" data-filter="Acessórios">Acessórios</button>
+    <button class="filter-pill" data-filter="Conjuntos">Conjuntos</button>
+    <button class="filter-pill" data-filter="Colecionáveis">Colecionáveis</button>
+  </div>
+  <div class="products-grid animate-target" id="products-grid" role="list"></div>
+</section>
+
+<!-- ===== BRAND STATEMENT (Section 5) ===== -->
+<section id="brand-statement">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="brand-decor animate-target" aria-hidden="true">
+    <div class="brand-line"></div>
+    <i class="fas fa-film" style="color:var(--pf-red);font-size:20px"></i>
+    <div class="brand-line"></div>
+  </div>
+  <h2 class="brand-tagline animate-target">"Para quem carrega um universo dentro."</h2>
+  <p class="brand-sub animate-target">Produtos exclusivos para fãs que levam sua paixão a sério. Cada item escolhido com intenção, cada detalhe pensado para emocionar.</p>
+  <a href="https://shopee.com.br/peakfiction" target="_blank" rel="noopener" class="btn-primary animate-target" style="display:inline-block">VER TODA A COLEÇÃO</a>
+</section>
+
+<!-- ===== BEST SELLERS (Section 6) ===== -->
+<section id="bestsellers">
+  <div class="section-header animate-target">
+    <p class="section-tag">Os favoritos da comunidade</p>
+    <h2 class="section-title">OS FAVORITOS</h2>
+    <p class="section-subtitle">Os produtos que o universo Peak Fiction mais ama</p>
+  </div>
+  <div class="products-grid animate-target" id="bestsellers-grid" role="list"></div>
+  <div class="view-all-wrap animate-target">
+    <a href="https://shopee.com.br/peakfiction" target="_blank" rel="noopener" class="btn-view-all">VER TODOS OS PRODUTOS</a>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS (Section 7) ===== -->
+<section id="testimonials">
+  <div class="section-header animate-target">
+    <p class="section-tag">Comunidade Peak Fiction</p>
+    <h2 class="section-title">O QUE A COMUNIDADE DIZ</h2>
+  </div>
+  <div class="testi-track animate-target" id="testi-track" aria-live="polite">
+    <div class="testi-inner" id="testi-inner">
+      <!-- Testimonials rendered via JS -->
+    </div>
+  </div>
+  <div class="testi-nav animate-target" id="testi-nav" role="tablist" aria-label="Navegação de depoimentos"></div>
+</section>
+
+<!-- ===== ABOUT (Section 8) ===== -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text animate-target">
+      <p class="section-tag">Nossa história</p>
+      <h2 class="about-title">UMA MARCA NASCIDA DA PAIXÃO</h2>
+      <div class="about-body">
+        <p>A Peak Fiction nasceu do mesmo lugar que toda grande história: de uma paixão impossível de conter. Somos fãs antes de qualquer coisa — de mangás que nos deixaram sem dormir, de filmes que nos fizeram chorar no cinema, de universos que continuam vivos em nós anos depois.</p>
+        <p>Cada produto que trazemos para você passa pelo nosso crivo mais rigoroso: ele precisa fazer o coração acelerar. Precisa ser digno da história que representa. Porque quem é fã de verdade sabe a diferença entre um produto qualquer e um que carrega a alma do seu universo favorito.</p>
+        <p>Esse é o padrão Peak Fiction. Esse é o nosso compromisso com você e com as histórias que nos formaram.</p>
+      </div>
+    </div>
+    <div class="about-img animate-target">
+      <img src="https://picsum.photos/seed/peakfiction-about/600/750" alt="Peak Fiction — colecionáveis e cultura pop" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER (Section 9) ===== -->
+<section id="newsletter">
+  <div class="nl-glow" aria-hidden="true"></div>
+  <h2 class="nl-title animate-target">FIQUE POR DENTRO DAS NOVIDADES</h2>
+  <p class="nl-sub animate-target">Ofertas exclusivas, lançamentos e conteúdo para fãs de verdade. Direto na sua caixa de entrada.</p>
+  <div class="nl-form animate-target" role="search">
+    <input class="nl-input" id="nl-email" type="email" placeholder="seu@email.com" aria-label="Seu e-mail">
+    <button class="nl-btn" onclick="subscribeNewsletter()" aria-label="Assinar newsletter">QUERO RECEBER</button>
+  </div>
+  <label class="nl-lgpd animate-target">
+    <input type="checkbox" id="nl-lgpd" aria-label="Aceitar política de privacidade">
+    Li e aceito a <a href="#" style="color:var(--pf-red)">Política de Privacidade</a> (LGPD)
+  </label>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">PEAK FICTION</div>
+      <p class="footer-tagline">Para quem carrega um universo dentro.<br>Cultura pop, cinema, mangá e colecionáveis de alto padrão.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram Peak Fiction"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="social-link" aria-label="TikTok Peak Fiction"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+        <a href="#" class="social-link" aria-label="X/Twitter Peak Fiction"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" class="social-link" aria-label="Pinterest Peak Fiction"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div>
+      <h3 class="footer-col-title">Links Rápidos</h3>
+      <ul class="footer-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#products">Produtos</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#newsletter">Contato</a></li>
+        <li><a href="#">Política de Privacidade</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="footer-col-title">Informações</h3>
+      <ul class="footer-links">
+        <li><a href="#">Formas de Pagamento</a></li>
+        <li><a href="#">Envio via Shopee</a></li>
+        <li><a href="#">Prazos de Entrega</a></li>
+        <li><a href="#">Trocas e Devoluções</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="footer-col-title">Contato</h3>
+      <ul class="footer-links">
+        <li><a href="mailto:contato@peakfiction.com.br">contato@peakfiction.com.br</a></li>
+        <li><a href="https://shopee.com.br/peakfiction" target="_blank" rel="noopener">@peakfiction na Shopee</a></li>
+        <li><a href="#">@peakfiction no Instagram</a></li>
+        <li><a href="#">@peakfiction no TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Peak Fiction. Todos os direitos reservados.</p>
+    <p class="footer-copy">Made with ❤️ para fãs de verdade.</p>
+  </div>
+</footer>
+
+<!-- ===== PRODUCT MODAL ===== -->
+<div id="product-modal" role="dialog" aria-modal="true" aria-label="Detalhes do produto">
+  <div class="modal-inner" id="modal-inner">
+    <img class="modal-img" id="modal-img" src="" alt="">
+    <div class="modal-body" id="modal-body">
+      <button class="modal-close" id="modal-close" aria-label="Fechar">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SEARCH OVERLAY ===== -->
+<div id="search-overlay" role="search" aria-label="Busca de produtos">
+  <div class="search-wrap">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input type="search" id="search-input" placeholder="Buscar produtos..." aria-label="Campo de busca">
+    <button class="search-close-btn" id="search-close" aria-label="Fechar busca">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="search-results" id="search-results" role="list"></div>
+</div>
+
+<!-- ===== NOTIFICATION ===== -->
+<div class="notif" id="notif" role="status" aria-live="polite"></div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+/* ===== DATA ===== */
+const products = [
+  {
+    id: 1,
+    name: "Varinha Mágica do Mistério — 30cm",
+    category: "Varinhas",
+    price: 49.90,
+    originalPrice: 79.90,
+    rating: 4.7,
+    reviewCount: 214,
+    badge: "OFERTA",
+    image: "assets/img/produtos/produto-01-varinha-misterio.png",
+    description: "Uma varinha mágica de 30 cm repleta de mistério e magia. Com detalhes entalhados e acabamento premium, é uma colecionável digna de qualquer bruxo. Ideal para colecionar ou presentear fãs do mundo bruxo.",
+    tags: ["harry potter", "varinha", "colecionável"],
+    shopeeUrl: "https://s.shopee.com.br/10ycW7Gl3r",
+    inStock: true
+  },
+  {
+    id: 2,
+    name: "Funko Pop Harry Potter",
+    category: "Figures",
+    price: 89.90,
+    originalPrice: 129.90,
+    rating: 4.9,
+    reviewCount: 387,
+    badge: "BEST SELLER",
+    image: "assets/img/produtos/produto-02-funko-pop-harry.png",
+    description: "O Funko Pop oficial do bruxo mais famoso de todos os tempos. Com design fiel ao personagem, caixa colecionável e qualidade impecável, é o item perfeito para qualquer estante de fã.",
+    tags: ["harry potter", "funko pop", "figure", "colecionável"],
+    shopeeUrl: "https://s.shopee.com.br/808LQRgqbM",
+    inStock: true
+  },
+  {
+    id: 3,
+    name: "Varinha Luminosa — Dumbledore",
+    category: "Varinhas",
+    price: 69.90,
+    originalPrice: null,
+    rating: 4.8,
+    reviewCount: 156,
+    badge: "NOVO",
+    image: "assets/img/produtos/produto-03-varinha-dumbledore.png",
+    description: "A varinha do maior bruxo de todos os tempos, agora com luz integrada. Detalhes ricos e iluminação mágica fazem desta peça um item de destaque em qualquer coleção dedicada ao mundo de Harry Potter.",
+    tags: ["dumbledore", "varinha", "luminosa", "harry potter"],
+    shopeeUrl: "https://s.shopee.com.br/8phYN4qkEe",
+    inStock: true
+  },
+  {
+    id: 4,
+    name: "Varinha Mágica — Hermione Granger",
+    category: "Varinhas",
+    price: 59.90,
+    originalPrice: 89.90,
+    rating: 4.8,
+    reviewCount: 292,
+    badge: "OFERTA",
+    image: "assets/img/produtos/produto-04-varinha-hermione.png",
+    description: "A varinha da bruxa mais inteligente de Hogwarts agora em suas mãos. Reprodução fiel com 30 cm de comprimento, acabamento artesanal e materiais de alta qualidade que fariam Hermione aprovar.",
+    tags: ["hermione", "varinha", "harry potter", "hogwarts"],
+    shopeeUrl: "https://s.shopee.com.br/BPVWaJvki",
+    inStock: true
+  },
+  {
+    id: 5,
+    name: "Mandrágora Bebê — Harry Potter",
+    category: "Colecionáveis",
+    price: 79.90,
+    originalPrice: null,
+    rating: 4.9,
+    reviewCount: 178,
+    badge: "NOVO",
+    image: "assets/img/produtos/produto-05-mandragora.png",
+    description: "Diretamente das estufas de Herbologia de Hogwarts. A Mandrágora Bebê é um colecionável encantador feito com atenção excepcional aos detalhes, capturando perfeitamente o visual memorável do filme.",
+    tags: ["mandrágora", "herbologia", "harry potter", "colecionável"],
+    shopeeUrl: "https://s.shopee.com.br/165KHKZ5h",
+    inStock: true
+  },
+  {
+    id: 6,
+    name: "Hermione & Harry Potter — Conjunto de Presente",
+    category: "Conjuntos",
+    price: 149.90,
+    originalPrice: 210.00,
+    rating: 5.0,
+    reviewCount: 94,
+    badge: "OFERTA",
+    image: "assets/img/produtos/produto-06-kit-hermione-harry.png",
+    description: "O presente dos sonhos para qualquer fã de Harry Potter. Um conjunto exclusivo reunindo itens icônicos de Hermione e Harry em uma embalagem especial de presente, pronta para encantar quem recebe.",
+    tags: ["hermione", "harry potter", "kit", "presente", "conjunto"],
+    shopeeUrl: "https://s.shopee.com.br/9fGZPVaVDa",
+    inStock: true
+  },
+  {
+    id: 7,
+    name: "Varinha Mágica — Lorde Voldemort",
+    category: "Varinhas",
+    price: 54.90,
+    originalPrice: 79.90,
+    rating: 4.7,
+    reviewCount: 203,
+    badge: "OFERTA",
+    image: "assets/img/produtos/produto-07-varinha-voldemort.png",
+    description: "Aquele cujo nome não se pronuncia agora em forma de varinha colecionável. A varinha do Lorde das Trevas, com design sombrio e textura única, é uma peça para os colecionadores mais ousados.",
+    tags: ["voldemort", "varinha", "harry potter", "dark arts"],
+    shopeeUrl: "https://s.shopee.com.br/5VR0Rg8HRs",
+    inStock: true
+  },
+  {
+    id: 8,
+    name: "Varinha Mágica do Mistério — Edição Surpresa",
+    category: "Varinhas",
+    price: 44.90,
+    originalPrice: null,
+    rating: 4.6,
+    reviewCount: 319,
+    badge: "NOVO",
+    image: "assets/img/produtos/produto-08-varinha-misterio2.png",
+    description: "Uma experiência única: você não sabe qual varinha virá! Assim como em Ollivanders, é a varinha que escolhe o bruxo. Cada unidade traz uma surpresa diferente do universo Harry Potter.",
+    tags: ["varinha", "mistério", "surpresa", "harry potter"],
+    shopeeUrl: "https://s.shopee.com.br/3B35g1sCnK",
+    inStock: true
+  },
+  {
+    id: 9,
+    name: "Varinha Mágica — Gina Weasley 30cm",
+    category: "Varinhas",
+    price: 54.90,
+    originalPrice: 74.90,
+    rating: 4.7,
+    reviewCount: 127,
+    badge: "OFERTA",
+    image: "assets/img/produtos/produto-09-varinha-gina.png",
+    description: "A varinha da corajosa Ginevra Weasley, uma bruxa que provou ser tão poderosa quanto qualquer membro da Ordem. 30 cm de detalhes meticulosos que capturam a essência de Gina.",
+    tags: ["gina weasley", "weasley", "varinha", "harry potter"],
+    shopeeUrl: "https://s.shopee.com.br/3LMVsKrZSP",
+    inStock: true
+  },
+  {
+    id: 10,
+    name: "Varinha Mágica — Cho Chang 30cm",
+    category: "Varinhas",
+    price: 54.90,
+    originalPrice: null,
+    rating: 4.6,
+    reviewCount: 88,
+    badge: "NOVO",
+    image: "assets/img/produtos/produto-10-varinha-cho.png",
+    description: "A varinha da encantadora seekera do Ravenclaw, Cho Chang. Uma peça elegante e refinada, com 30 cm de comprimento e detalhes que refletem a graça e habilidade da personagem.",
+    tags: ["cho chang", "ravenclaw", "varinha", "harry potter"],
+    shopeeUrl: "https://s.shopee.com.br/5L7aFN8umr",
+    inStock: true
+  },
+  {
+    id: 11,
+    name: "Dobby — Action Figure Colecionável",
+    category: "Figures",
+    price: 119.90,
+    originalPrice: 159.90,
+    rating: 4.9,
+    reviewCount: 241,
+    badge: "BEST SELLER",
+    image: "assets/img/produtos/produto-11-dobby.png",
+    description: "Dobby é um elfo livre — e agora é seu! Esta action figure captura com perfeição cada detalhe expressivo do elfo doméstico mais querido da saga. Detalhes pintados à mão, olhos grandes e orelhas icônicas.",
+    tags: ["dobby", "elfo", "action figure", "harry potter"],
+    shopeeUrl: "https://s.shopee.com.br/8fO2DfeJFQ",
+    inStock: true
+  },
+  {
+    id: 12,
+    name: "Colares Harry Potter — Kit Colecionável",
+    category: "Acessórios",
+    price: 39.90,
+    originalPrice: 59.90,
+    rating: 4.8,
+    reviewCount: 445,
+    badge: "BEST SELLER",
+    image: "assets/img/produtos/produto-12-colares.png",
+    description: "Use o mundo bruxo onde quer que vá. Um kit exclusivo de colares inspirados nos símbolos mais icônicos do universo Harry Potter — Relíquias da Morte, Grifinória, e muito mais em um conjunto imperdível.",
+    tags: ["colar", "acessório", "harry potter", "joias"],
+    shopeeUrl: "https://s.shopee.com.br/8phSPydfuT",
+    inStock: true
+  }
+];
+
+const testimonials = [
+  { initials: "AL", name: "Ana Luiza", city: "São Paulo, SP", stars: 5, text: "Recebi a varinha da Hermione e simplesmente não consigo parar de olhar para ela. O acabamento é impressionante, parece exatamente o que eu via nos filmes. Peak Fiction é diferente de qualquer loja que já comprei." },
+  { initials: "RS", name: "Rafael Santos", city: "Rio de Janeiro, RJ", stars: 5, text: "Comprei o Dobby para a minha filha e ela não largou mais. A qualidade supera qualquer expectativa. O embalamento foi cuidadoso e chegou perfeito. Já virei cliente fiel da Peak Fiction." },
+  { initials: "MC", name: "Mariana Costa", city: "Belo Horizonte, MG", stars: 5, text: "Os colares do Kit Harry Potter são lindíssimos. Uso todos os dias e recebo elogios constantes. Parece que parte da magia de Hogwarts veio junto. Amei tudo!" },
+  { initials: "PO", name: "Pedro Oliveira", city: "Curitiba, PR", stars: 5, text: "A varinha surpresa foi uma experiência incrível! Abri como se estivesse em Ollivanders de verdade. O produto é excelente e o atendimento da Peak Fiction é excepcional. 10 estrelas se pudesse." },
+  { initials: "JF", name: "Juliana Ferreira", city: "Porto Alegre, RS", stars: 5, text: "Comprei o kit Hermione e Harry como presente de aniversário. A pessoa chorou de emoção ao abrir. É isso que a Peak Fiction entrega: não apenas produtos, mas momentos inesquecíveis." },
+  { initials: "LM", name: "Lucas Moura", city: "Brasília, DF", stars: 5, text: "Mandrágora Bebê é um absurdo de fofa e detalhada. Parece uma peça de arte. Cada colecionável da Peak Fiction é selecionado com um cuidado que se sente ao segurar o produto." }
+];
+
+/* ===== HERO BACKGROUND ===== */
+const posterSeeds = [
+  'cinema01','film02','dark03','fantasy04','gothic05','noir06',
+  'moody07','epic08','magic09','crimson10','shadow11','myth12',
+  'legend13','dusk14','ancient15'
+];
+
+function buildHeroBg() {
+  const bg = document.getElementById('hero-bg');
+  const isMobile = window.innerWidth < 480;
+  const cols = isMobile ? 3 : 6;
+  const postersPerCol = 10;
+  bg.innerHTML = '';
+  for (let c = 0; c < cols; c++) {
+    const col = document.createElement('div');
+    col.className = 'poster-col';
+    // Double for seamless loop
+    for (let pass = 0; pass < 2; pass++) {
+      for (let p = 0; p < postersPerCol; p++) {
+        const seed = posterSeeds[(c * postersPerCol + p) % posterSeeds.length];
+        const item = document.createElement('div');
+        item.className = 'poster-item';
+        const img = document.createElement('img');
+        img.src = `https://picsum.photos/seed/${seed}-${c}/200/300`;
+        img.alt = '';
+        img.loading = 'lazy';
+        item.appendChild(img);
+        col.appendChild(item);
+      }
+    }
+    bg.appendChild(col);
+  }
+}
+
+/* ===== RENDER PRODUCTS ===== */
+function renderStars(rating) {
+  let s = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= Math.floor(rating)) s += '★';
+    else if (i - rating < 1) s += '½';
+    else s += '☆';
+  }
+  return s;
+}
+
+function formatPrice(p) {
+  return 'R$ ' + p.toFixed(2).replace('.', ',');
+}
+
+function getBadgeClass(badge) {
+  if (!badge) return '';
+  if (badge === 'NOVO') return 'badge-novo';
+  if (badge === 'BEST SELLER') return 'badge-bestseller';
+  return 'badge-oferta';
+}
+
+function createProductCard(product) {
+  const card = document.createElement('article');
+  card.className = 'product-card';
+  card.setAttribute('data-category', product.category);
+  card.setAttribute('role', 'listitem');
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('aria-label', product.name);
+
+  const isFav = getFavorites().includes(product.id);
+
+  card.innerHTML = `
+    <div class="pc-img-wrap">
+      <img class="pc-img" src="${product.image}" alt="${product.name}" loading="lazy">
+      ${product.badge ? `<span class="pc-badge ${getBadgeClass(product.badge)}">${product.badge}</span>` : ''}
+      <button class="pc-fav ${isFav ? 'favorited' : ''}" data-id="${product.id}" aria-label="${isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">
+        <i class="fas fa-heart" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="pc-body">
+      <p class="pc-cat">${product.category}</p>
+      <h3 class="pc-name">${product.name}</h3>
+      <div class="pc-rating">
+        <span class="stars" aria-hidden="true">${renderStars(product.rating)}</span>
+        <span class="rating-val">${product.rating} (${product.reviewCount})</span>
+      </div>
+      <div class="pc-price">
+        <span class="price-now">${formatPrice(product.price)}</span>
+        ${product.originalPrice ? `<span class="price-old">${formatPrice(product.originalPrice)}</span>` : ''}
+      </div>
+      <a href="${product.shopeeUrl}" target="_blank" rel="noopener noreferrer" class="btn-buy" aria-label="Comprar ${product.name} na Shopee">
+        <i class="fas fa-shopping-bag" aria-hidden="true"></i> COMPRAR NA SHOPEE <i class="fas fa-external-link-alt" style="font-size:10px" aria-hidden="true"></i>
+      </a>
+    </div>
+  `;
+
+  // Open modal on card body (not buy button)
+  card.querySelector('.pc-img-wrap').addEventListener('click', () => openModal(product.id));
+  card.querySelector('.pc-name').addEventListener('click', () => openModal(product.id));
+
+  // Favorite toggle
+  card.querySelector('.pc-fav').addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleFavorite(product.id, e.currentTarget);
+  });
+
+  // Keyboard
+  card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openModal(product.id); });
+
+  return card;
+}
+
+function renderProductsGrid(container, items) {
+  container.innerHTML = '';
+  items.forEach(p => container.appendChild(createProductCard(p)));
+}
+
+/* ===== FILTER ===== */
+function filterCategory(cat) {
+  // Switch active pill
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.classList.toggle('active', pill.dataset.filter === cat || (cat === 'Todos' && pill.dataset.filter === 'Todos'));
+  });
+  // Show/hide cards
+  const grid = document.getElementById('products-grid');
+  grid.querySelectorAll('.product-card').forEach(card => {
+    const matches = cat === 'Todos' || card.dataset.category === cat;
+    card.classList.toggle('hidden', !matches);
+  });
+}
+
+/* ===== MODAL ===== */
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  const modal = document.getElementById('product-modal');
+  document.getElementById('modal-img').src = p.image;
+  document.getElementById('modal-img').alt = p.name;
+
+  const body = document.getElementById('modal-body');
+  const isFav = getFavorites().includes(p.id);
+
+  body.innerHTML = `
+    <button class="modal-close" id="modal-close" aria-label="Fechar">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <p class="modal-cat">${p.category}</p>
+    <h2 class="modal-title">${p.name}</h2>
+    <div class="modal-rating">
+      <span class="stars" aria-hidden="true">${renderStars(p.rating)}</span>
+      <span style="color:var(--pf-gray-muted);font-size:13px">${p.rating} · ${p.reviewCount} avaliações</span>
+    </div>
+    <div class="modal-price">
+      <span class="modal-price-now">${formatPrice(p.price)}</span>
+      ${p.originalPrice ? `<span class="modal-price-old">${formatPrice(p.originalPrice)}</span>` : ''}
+    </div>
+    <p class="modal-desc">${p.description}</p>
+    <div class="modal-tags">
+      ${p.tags.map(t => `<span class="modal-tag">#${t}</span>`).join('')}
+    </div>
+    <div class="modal-shipping">
+      <i class="fas fa-truck" aria-hidden="true"></i>
+      <span>Envio via Shopee · Frete calculado no checkout</span>
+    </div>
+    <div class="modal-divider" aria-hidden="true"></div>
+    <a href="${p.shopeeUrl}" target="_blank" rel="noopener" class="btn-modal-buy" aria-label="Comprar na Shopee">
+      <i class="fas fa-shopping-bag" aria-hidden="true"></i> COMPRAR NA SHOPEE
+    </a>
+    <button class="btn-modal-fav" id="modal-fav-btn" data-id="${p.id}" aria-label="${isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">
+      <i class="fas fa-heart" aria-hidden="true"></i> ${isFav ? 'REMOVER DOS FAVORITOS' : 'ADICIONAR AOS FAVORITOS'}
+    </button>
+  `;
+
+  body.querySelector('#modal-close').addEventListener('click', closeModal);
+  body.querySelector('#modal-fav-btn').addEventListener('click', function() {
+    toggleFavorite(p.id, null);
+    const isFavNow = getFavorites().includes(p.id);
+    this.innerHTML = `<i class="fas fa-heart" aria-hidden="true"></i> ${isFavNow ? 'REMOVER DOS FAVORITOS' : 'ADICIONAR AOS FAVORITOS'}`;
+  });
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal-close').focus();
+}
+
+function closeModal() {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('product-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeSearch();
+  }
+});
+
+/* ===== FAVORITES ===== */
+function getFavorites() {
+  try { return JSON.parse(localStorage.getItem('pf_favorites') || '[]'); } catch { return []; }
+}
+
+function saveFavorites(favs) {
+  try { localStorage.setItem('pf_favorites', JSON.stringify(favs)); } catch {}
+}
+
+function toggleFavorite(id, btn) {
+  const favs = getFavorites();
+  const idx = favs.indexOf(id);
+  let added;
+  if (idx > -1) { favs.splice(idx, 1); added = false; }
+  else { favs.push(id); added = true; }
+  saveFavorites(favs);
+
+  // Update all fav buttons for this product
+  document.querySelectorAll(`.pc-fav[data-id="${id}"]`).forEach(b => {
+    b.classList.toggle('favorited', added);
+  });
+
+  // Update cart badge
+  updateCartBadge();
+  showNotif(added ? '❤️ Adicionado aos favoritos!' : '💔 Removido dos favoritos');
+}
+
+function updateCartBadge() {
+  const count = getFavorites().length;
+  const badge = document.getElementById('cart-count');
+  badge.textContent = count;
+  badge.classList.toggle('hidden', count === 0);
+}
+
+/* ===== NOTIFICATION ===== */
+function showNotif(msg) {
+  const n = document.getElementById('notif');
+  n.textContent = msg;
+  n.classList.add('show');
+  setTimeout(() => n.classList.remove('show'), 3000);
+}
+
+/* ===== FEATURED BANNER ===== */
+let featuredIdx = 0;
+let featuredTimer;
+
+function goToSlide(idx) {
+  const slides = document.querySelectorAll('.featured-slide');
+  const dots   = document.querySelectorAll('.featured-dot');
+  slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+  dots.forEach((d, i)   => d.classList.toggle('active',  i === idx));
+  featuredIdx = idx;
+}
+
+function startFeaturedTimer() {
+  featuredTimer = setInterval(() => {
+    const count = document.querySelectorAll('.featured-slide').length;
+    goToSlide((featuredIdx + 1) % count);
+  }, 5000);
+}
+
+document.querySelectorAll('.featured-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    clearInterval(featuredTimer);
+    goToSlide(+dot.dataset.slide);
+    startFeaturedTimer();
+  });
+});
+
+document.getElementById('featured').addEventListener('mouseenter', () => clearInterval(featuredTimer));
+document.getElementById('featured').addEventListener('mouseleave', startFeaturedTimer);
+
+/* ===== TESTIMONIALS CAROUSEL ===== */
+let testiIdx = 0;
+let testiTimer;
+const TESTI_VISIBLE = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+
+function buildTestimonials() {
+  const inner = document.getElementById('testi-inner');
+  const nav   = document.getElementById('testi-nav');
+  inner.innerHTML = '';
+  nav.innerHTML   = '';
+
+  testimonials.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'testi-card';
+    card.innerHTML = `
+      <div class="testi-head">
+        <div class="testi-avatar" aria-hidden="true">${t.initials}</div>
+        <div>
+          <p class="testi-name">${t.name}</p>
+          <p class="testi-city">${t.city}</p>
+        </div>
+      </div>
+      <div class="testi-stars" aria-label="${t.stars} de 5 estrelas">${'★'.repeat(t.stars)}</div>
+      <p class="testi-text">"${t.text}"</p>
+    `;
+    inner.appendChild(card);
+
+    const dot = document.createElement('button');
+    dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Depoimento ${i + 1}`);
+    dot.addEventListener('click', () => { clearInterval(testiTimer); goToTesti(i); startTestiTimer(); });
+    nav.appendChild(dot);
+  });
+}
+
+function goToTesti(idx) {
+  const cards = document.querySelectorAll('.testi-card');
+  const dots  = document.querySelectorAll('.testi-dot');
+  const cardW = cards[0] ? cards[0].offsetWidth + 24 : 0;
+  document.getElementById('testi-inner').style.transform = `translateX(-${idx * cardW}px)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  testiIdx = idx;
+}
+
+function startTestiTimer() {
+  testiTimer = setInterval(() => {
+    goToTesti((testiIdx + 1) % testimonials.length);
+  }, 4000);
+}
+
+document.getElementById('testi-track').addEventListener('mouseenter', () => clearInterval(testiTimer));
+document.getElementById('testi-track').addEventListener('mouseleave', startTestiTimer);
+
+/* ===== SEARCH ===== */
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('search-input').focus();
+}
+
+function closeSearch() {
+  document.getElementById('search-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').innerHTML = '';
+}
+
+document.getElementById('search-toggle').addEventListener('click', openSearch);
+document.getElementById('search-close').addEventListener('click', closeSearch);
+
+document.getElementById('search-input').addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  const resultsEl = document.getElementById('search-results');
+  if (!q) { resultsEl.innerHTML = ''; return; }
+
+  const matches = products.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.category.toLowerCase().includes(q) ||
+    p.tags.some(t => t.includes(q))
+  );
+
+  if (!matches.length) {
+    resultsEl.innerHTML = '<p class="search-empty">Nenhum produto encontrado. Tente outro termo.</p>';
+    return;
+  }
+
+  resultsEl.innerHTML = '';
+  matches.forEach(p => {
+    const card = createProductCard(p);
+    card.setAttribute('role', 'listitem');
+    resultsEl.appendChild(card);
+  });
+});
+
+document.getElementById('search-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSearch();
+});
+
+/* ===== NAVBAR SCROLL ===== */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+/* ===== FILTER PILLS ===== */
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    filterCategory(pill.dataset.filter);
+  });
+});
+
+/* ===== DRAWER ===== */
+const hamburger     = document.getElementById('hamburger');
+const navDrawer     = document.getElementById('nav-drawer');
+const drawerOverlay = document.getElementById('drawer-overlay');
+const drawerClose   = document.getElementById('drawer-close');
+
+function openDrawer()  { navDrawer.classList.add('open'); drawerOverlay.classList.add('visible'); document.body.style.overflow = 'hidden'; }
+function closeDrawer() { navDrawer.classList.remove('open'); drawerOverlay.classList.remove('visible'); document.body.style.overflow = ''; }
+
+hamburger.addEventListener('click', openDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+drawerOverlay.addEventListener('click', closeDrawer);
+document.querySelectorAll('.drawer-nav-link').forEach(a => a.addEventListener('click', closeDrawer));
+
+/* ===== INTERSECTION OBSERVER ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animated');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.animate-target').forEach(el => observer.observe(el));
+
+/* ===== NEWSLETTER ===== */
+function subscribeNewsletter() {
+  const email = document.getElementById('nl-email').value.trim();
+  const lgpd  = document.getElementById('nl-lgpd').checked;
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { showNotif('⚠️ Insira um e-mail válido!'); return; }
+  if (!lgpd) { showNotif('⚠️ Aceite a política de privacidade para continuar.'); return; }
+  showNotif('✅ Inscrição realizada com sucesso! Bem-vindo(a) à Peak Fiction!');
+  document.getElementById('nl-email').value = '';
+  document.getElementById('nl-lgpd').checked = false;
+}
+
+/* ===== INIT ===== */
+function init() {
+  buildHeroBg();
+
+  // Main products grid (all 12 products)
+  const grid = document.getElementById('products-grid');
+  renderProductsGrid(grid, products);
+
+  // Best sellers (badge = BEST SELLER)
+  const bsGrid = document.getElementById('bestsellers-grid');
+  const bestSellers = products.filter(p => p.badge === 'BEST SELLER');
+  // Fill with high-rated if not enough
+  const fillers = products.filter(p => p.badge !== 'BEST SELLER').sort((a,b) => b.rating - a.rating);
+  const bsItems = [...bestSellers, ...fillers].slice(0, 8);
+  // Mark all as bestsellers for this section
+  const bsItemsMarked = bsItems.map(p => ({ ...p, badge: 'BEST SELLER' }));
+  renderProductsGrid(bsGrid, bsItemsMarked);
+
+  buildTestimonials();
+  startFeaturedTimer();
+  startTestiTimer();
+  updateCartBadge();
+
+  // Re-observe newly added elements
+  document.querySelectorAll('.animate-target').forEach(el => observer.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
