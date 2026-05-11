@@ -436,64 +436,58 @@
   </div>
 </section>
 
-<!-- ===== FEATURED (Section 2) ===== -->
-<section id="featured" aria-label="Produtos em destaque">
-  <!-- Slide 1 -->
-  <article class="featured-slide active">
-    <div class="featured-bg">
-      <img src="https://picsum.photos/seed/hp-dobby/1400/520" alt="Dobby Action Figure em destaque" loading="lazy">
-      <div class="featured-gradient" aria-hidden="true"></div>
-    </div>
-    <div class="featured-content">
-      <span class="featured-badge">EM DESTAQUE</span>
-      <h2 class="featured-title">DOBBY ACTION FIGURE</h2>
-      <p class="featured-desc">Um elfo doméstico icônico em detalhes impressionantes. Perfeito para todo fã do mundo bruxo, capturando a expressividade única de Dobby em cada centímetro.</p>
-      <div class="featured-price">R$ 119,90 <del>R$ 159,90</del></div>
-      <div class="featured-ctas">
-        <a href="https://s.shopee.com.br/8fO2DfeJFQ" target="_blank" rel="noopener" class="btn-primary">COMPRAR NA SHOPEE</a>
-        <button class="btn-outline" onclick="openModal(10)" style="cursor:pointer">VER DETALHES</button>
-      </div>
-    </div>
-  </article>
-  <!-- Slide 2 -->
-  <article class="featured-slide">
-    <div class="featured-bg">
-      <img src="https://picsum.photos/seed/hp-kit/1400/520" alt="Hermione e Harry Potter Kit em destaque" loading="lazy">
-      <div class="featured-gradient" aria-hidden="true"></div>
-    </div>
-    <div class="featured-content">
-      <span class="featured-badge">OFERTA ESPECIAL</span>
-      <h2 class="featured-title">KIT HERMIONE & HARRY POTTER</h2>
-      <p class="featured-desc">O presente perfeito para fãs de verdade. Um conjunto exclusivo reunindo os dois bruxos mais amados da história em um presente inesquecível.</p>
-      <div class="featured-price">R$ 149,90 <del>R$ 210,00</del></div>
-      <div class="featured-ctas">
-        <a href="https://s.shopee.com.br/9fGZPVaVDa" target="_blank" rel="noopener" class="btn-primary">COMPRAR NA SHOPEE</a>
-        <button class="btn-outline" onclick="openModal(5)" style="cursor:pointer">VER DETALHES</button>
-      </div>
-    </div>
-  </article>
-  <!-- Slide 3 -->
-  <article class="featured-slide">
-    <div class="featured-bg">
-      <img src="https://picsum.photos/seed/hp-mandragora/1400/520" alt="Mandrágora Bebê Harry Potter em destaque" loading="lazy">
-      <div class="featured-gradient" aria-hidden="true"></div>
-    </div>
-    <div class="featured-content">
-      <span class="featured-badge">MAIS VENDIDO</span>
-      <h2 class="featured-title">MANDRÁGORA BEBÊ</h2>
-      <p class="featured-desc">Diretamente das estufas de Herbologia de Hogwarts. A Mandrágora Bebê é um colecionável encantador com detalhes feitos à mão que vão tirar o fôlego.</p>
-      <div class="featured-price">R$ 79,90</div>
-      <div class="featured-ctas">
-        <a href="https://s.shopee.com.br/165KHKZ5h" target="_blank" rel="noopener" class="btn-primary">COMPRAR NA SHOPEE</a>
-        <button class="btn-outline" onclick="openModal(4)" style="cursor:pointer">VER DETALHES</button>
-      </div>
-    </div>
-  </article>
-  <!-- Dots -->
-  <div class="featured-dots" role="tablist" aria-label="Slides de destaque">
-    <button class="featured-dot active" aria-label="Slide 1" data-slide="0"></button>
-    <button class="featured-dot"        aria-label="Slide 2" data-slide="1"></button>
-    <button class="featured-dot"        aria-label="Slide 3" data-slide="2"></button>
+<style>
+  .rec-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    background: var(--pf-dark-2);
+    border-top: 1px solid rgba(229,9,20,0.15);
+    border-bottom: 1px solid rgba(229,9,20,0.15);
+  }
+  .rec-text {
+    flex: 1;
+    min-width: 300px;
+  }
+  .rec-image-wrap {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .rec-img {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    /* Aqui é onde fazemos aquele corte arredondado igual a sua foto de referência */
+    border-radius: 160px 8px 8px 8px; 
+    border: 2px solid var(--pf-dark-4);
+    box-shadow: -15px 15px 0px rgba(229,9,20,0.6); /* Sombra vermelha Peak Fiction */
+  }
+  @media (max-width: 768px) {
+    .rec-container { flex-direction: column; text-align: center; gap: 40px; }
+    .rec-image-wrap { justify-content: center; }
+    .rec-img { border-radius: 80px 8px 8px 8px; }
+  }
+</style>
+
+<section id="featured" class="rec-container">
+  <div class="rec-text animate-target">
+    <p class="section-tag">Inteligência Artificial Peak Fiction</p>
+    <h2 class="section-title" style="margin-bottom: 24px; font-size: clamp(32px, 4vw, 54px);">
+      INDICAMOS O FILME IDEAL PARA VOCÊ!
+    </h2>
+    <p class="section-subtitle" style="margin-bottom: 36px; font-size: 16px; line-height: 1.8; color: var(--pf-gray-mid);">
+      Não sabe o que assistir hoje? Nossa Inteligência Artificial analisa o seu perfil, seu humor atual e o mercado cinematográfico para sugerir até 3 obras (Filmes, Séries ou Animes) que vão explodir a sua mente.
+    </p>
+    <a href="quiz.html" class="btn-primary" style="padding: 18px 44px; font-size: 16px;">
+      <i class="fas fa-brain" style="margin-right: 8px;"></i> DESCUBRA AGORA
+    </a>
+  </div>
+  <div class="rec-image-wrap animate-target">
+    <img class="rec-img" src="./assets/img/banners/ia-banner.jfif" alt="Descubra seu filme ideal com IA" loading="lazy">
   </div>
 </section>
 
