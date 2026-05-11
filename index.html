@@ -919,31 +919,36 @@ const testimonials = [
 ];
 
 /* ===== HERO BACKGROUND ===== */
-const posterSeeds = [
-  'cinema01','film02','dark03','fantasy04','gothic05','noir06',
-  'moody07','epic08','magic09','crimson10','shadow11','myth12',
-  'legend13','dusk14','ancient15'
-];
-
 function buildHeroBg() {
   const bg = document.getElementById('hero-bg');
   const isMobile = window.innerWidth < 480;
-  const cols = isMobile ? 3 : 6;
-  const postersPerCol = 10;
+  const cols = isMobile ? 3 : 6; 
+  const postersPorColuna = 10;
+  
+  // ATENÇÃO: Coloque aqui a quantidade exata de fotos que você tem na pasta
+  const totalImagensDisponiveis = 40; // <-- Se você tiver 40 fotos, mude esse número para 40
+  
   bg.innerHTML = '';
+  
   for (let c = 0; c < cols; c++) {
     const col = document.createElement('div');
     col.className = 'poster-col';
-    // Double for seamless loop
+    
     for (let pass = 0; pass < 2; pass++) {
-      for (let p = 0; p < postersPerCol; p++) {
-        const seed = posterSeeds[(c * postersPerCol + p) % posterSeeds.length];
+      for (let p = 0; p < postersPorColuna; p++) {
+        
+        // O código sorteia uma foto da sua pasta
+        const numeroAleatorio = Math.floor(Math.random() * totalImagensDisponiveis) + 1;
+        
         const item = document.createElement('div');
         item.className = 'poster-item';
         const img = document.createElement('img');
-        img.src = `https://picsum.photos/seed/${seed}-${c}/200/300`;
-        img.alt = '';
+        
+        // Aqui ele já puxa o nome "c1", "c2" com o final ".jfif" que você pediu!
+        img.src = `./assets/img/capas/c${numeroAleatorio}.jfif`;
+        img.alt = 'Peak Fiction Absolute Cinema';
         img.loading = 'lazy';
+        
         item.appendChild(img);
         col.appendChild(item);
       }
