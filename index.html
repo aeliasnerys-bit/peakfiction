@@ -918,17 +918,36 @@ const testimonials = [
   { initials: "LM", name: "Lucas Moura", city: "Brasília, DF", stars: 5, text: "Mandrágora Bebê é um absurdo de fofa e detalhada. Parece uma peça de arte. Cada colecionável da Peak Fiction é selecionado com um cuidado que se sente ao segurar o produto." }
 ];
 
-/* ===== HERO BACKGROUND ===== */
+/* ===== HERO BACKGROUND - SISTEMA DE BARALHO (SEM REPETIÇÃO) ===== */
 function buildHeroBg() {
   const bg = document.getElementById('hero-bg');
   const isMobile = window.innerWidth < 480;
   const cols = isMobile ? 3 : 6; 
   const postersPorColuna = 10;
   
-  // ATENÇÃO: Coloque aqui a quantidade exata de fotos que você tem na pasta
-  const totalImagensDisponiveis = 40; // <-- Se você tiver 40 fotos, mude esse número para 40
+  // Quantidade exata de fotos na sua pasta
+  const totalImagensDisponiveis = 40; 
   
   bg.innerHTML = '';
+  
+  // 1. Cria um "baralho" com as cartas de 1 até o total de imagens
+  let baralho = [];
+  for (let i = 1; i <= totalImagensDisponiveis; i++) {
+    baralho.push(i);
+  }
+  
+  // 2. Função para embaralhar as cartas
+  function embaralhar(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  
+  // Embaralha antes de começar a distribuir
+  embaralhar(baralho);
+  let indexAtual = 0;
   
   for (let c = 0; c < cols; c++) {
     const col = document.createElement('div');
@@ -937,15 +956,22 @@ function buildHeroBg() {
     for (let pass = 0; pass < 2; pass++) {
       for (let p = 0; p < postersPorColuna; p++) {
         
-        // O código sorteia uma foto da sua pasta
-        const numeroAleatorio = Math.floor(Math.random() * totalImagensDisponiveis) + 1;
+        // Se as cartas acabarem, embaralha de novo e recomeça a distribuir
+        if (indexAtual >= baralho.length) {
+          embaralhar(baralho);
+          indexAtual = 0;
+        }
+        
+        // Pega a foto do topo do baralho e passa pra próxima
+        const numeroDaFoto = baralho[indexAtual];
+        indexAtual++;
         
         const item = document.createElement('div');
         item.className = 'poster-item';
         const img = document.createElement('img');
         
-        // Aqui ele já puxa o nome "c1", "c2" com o final ".jfif" que você pediu!
-        img.src = `./assets/img/capas/c${numeroAleatorio}.jfif`;
+        // Coloca a foto na tela
+        img.src = `./assets/img/capas/c${numeroDaFoto}.jfif`;
         img.alt = 'Peak Fiction Absolute Cinema';
         img.loading = 'lazy';
         
