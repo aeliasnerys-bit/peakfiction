@@ -103,8 +103,6 @@ const movieDatabase = [
     desc: "Um detetive investiga o desaparecimento de uma assassina em um hospital psiquiátrico isolado. O final vai te deixar mudo.", 
     tags: ["mindfuck", "tenso", "moderno", "real", "padrao"] 
   },
-
-// --- LOTE 2: EXPANSÃO DE GÊNEROS (Terror, Romance, Animação, Comédia, Ação) ---
   { 
     title: "O Cavaleiro das Trevas", 
     desc: "O caos toma conta de Gotham quando o Coringa decide testar os limites morais do Batman. O ápice dos filmes de heróis.", 
@@ -355,14 +353,11 @@ const movieDatabase = [
     desc: "Um parque de diversões com dinossauros clonados sai de controle. Ação épica com um pezinho no suspense.", 
     tags: ["tenso", "epic", "anos90", "scifi", "padrao"] 
   },
-// ... final do lote 2
   { 
     title: "Jurassic Park: O Parque dos Dinossauros", 
     desc: "Um parque de diversões com dinossauros clonados sai de controle. Ação épica com um pezinho no suspense.", 
     tags: ["tenso", "epic", "anos90", "scifi", "padrao"] 
-  }, // <-- NÃO ESQUEÇA DESSA VÍRGULA AQUI!
-
-  // --- LOTE 3: O IMPÉRIO CRESCE (Ação Tática, Máfia, Drama, Animações e Terror) ---
+  },
   { 
     title: "O Poderoso Chefão", 
     desc: "A ascensão e a queda da família Corleone. A maior obra-prima sobre máfia, poder e lealdade já feita no cinema.", 
@@ -612,4 +607,254 @@ const movieDatabase = [
     title: "Prenda-Me Se For Capaz", 
     desc: "A história real de um jovem mestre do disfarce que falsificou milhões em cheques e fugiu do FBI por anos.", 
     tags: ["rir", "tenso", "moderno", "real", "padrao"] 
+  },
+  { 
+    title: "Pantera Negra", 
+    desc: "A luta por Wakanda. Um épico de super-herói com uma cultura rica, visual incrível e um vilão com motivos reais.", 
+    tags: ["epic", "moderno", "scifi", "padrao"] 
+  },
+  { 
+    title: "Tropa de Elite", 
+    desc: "O cotidiano brutal do BOPE no Rio de Janeiro. Ação tática nacional, realista e extremamente intensa.", 
+    tags: ["tenso", "real", "cult", "padrao"] 
+  },
+  { 
+    title: "Ratatouille", 
+    desc: "Um ratinho com talento culinário prova que qualquer um pode cozinhar. Uma animação deliciosa e inspiradora.", 
+    tags: ["rir", "moderno", "scifi", "curto"] 
+  },
+  { 
+    title: "O Destino de uma Nação", 
+    desc: "Winston Churchill precisa decidir entre negociar com Hitler ou lutar contra todas as probabilidades. Atuação histórica.", 
+    tags: ["tenso", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Simplesmente Amor", 
+    desc: "Várias histórias de amor se entrelaçam em Londres durante o Natal. O clássico absoluto das comédias românticas.", 
+    tags: ["rir", "chorar", "real", "padrao", "cult"] 
+  },
+  { 
+    title: "Corpo Fechado (Unbreakable)", 
+    desc: "Um segurança descobre que é o único sobrevivente de um acidente de trem sem um arranhão sequer. Heróis de um jeito real.", 
+    tags: ["mindfuck", "tenso", "cult", "scifi", "padrao"] 
+  },
+  { 
+    title: "Ratatouille", 
+    desc: "Um ratinho com talento culinário prova que qualquer um pode cozinhar. Uma animação deliciosa e inspiradora.", 
+    tags: ["rir", "moderno", "scifi", "curto"] 
+  },
+  { 
+    title: "Corrente do Mal", 
+    desc: "Algo te persegue após um encontro amoroso. Um terror moderno de tirar o fôlego e com uma trilha sonora hipnótica.", 
+    tags: ["tenso", "moderno", "cult", "padrao"] 
+  },
+  { 
+    title: "Drive", 
+    desc: "Um dublê de Hollywood que trabalha como motorista de fuga se vê em perigo após ajudar uma vizinha. Estética impecável.", 
+    tags: ["tenso", "moderno", "cult", "real", "curto"] 
+  },
+  { 
+    title: "O Castelo Animado", 
+    desc: "Uma jovem amaldiçoada encontra refúgio no castelo andante de um mago. Fantasia visualmente deslumbrante do Studio Ghibli.", 
+    tags: ["scifi", "epic", "cult", "padrao"] 
+  },
+  { 
+    title: "A Rede Social", 
+    desc: "A criação do Facebook e as batalhas legais e pessoais que mudaram o mundo para sempre. Diálogos rápidos e afiados.", 
+    tags: ["real", "moderno", "cult", "padrao"] 
+  },
+  { 
+    title: "Sinais", 
+    desc: "Uma família isolada em uma fazenda descobre círculos misteriosos em suas plantações. O suspense alienígena definitivo.", 
+    tags: ["tenso", "scifi", "real", "padrao"] 
+  },
+  { 
+    title: "Moana: Um Mar de Aventuras", 
+    desc: "Uma jovem parte em uma missão ousada para salvar seu povo e descobrir sua própria identidade no oceano.", 
+    tags: ["rir", "epic", "moderno", "scifi", "padrao"] 
+  },
+  { 
+    title: "O Piauí nas Telas (Bacurau)", 
+    desc: "Um vilarejo no sertão brasileiro some do mapa e coisas muito estranhas começam a acontecer. Um mix de gêneros genial.", 
+    tags: ["tenso", "cult", "real", "moderno"] 
+  },
+  { 
+    title: "Ponte para Terabítia", 
+    desc: "Dois amigos criam um mundo de fantasia para fugir da realidade escolar. Prepara o lenço, o impacto emocional é gigante.", 
+    tags: ["chorar", "scifi", "real", "curto"] 
+  },
+  { 
+    title: "Busca Implacável", 
+    desc: "Um ex-agente usa todas as suas habilidades letais para resgatar sua filha sequestrada em Paris. Ação frenética.", 
+    tags: ["tenso", "real", "moderno", "curto"] 
+  },
+  { 
+    title: "O Exterminador do Futuro", 
+    desc: "Um ciborgue assassino é enviado do futuro para matar a mãe do líder da resistência. Suspense e ficção científica clássica.", 
+    tags: ["tenso", "scifi", "anos90", "padrao"] 
+  },
+  { 
+    title: "Coco: A Vida é uma Festa", 
+    desc: "Um menino viaja ao Mundo dos Mortos para descobrir a verdade sobre sua família. Uma explosão de cores e emoção.", 
+    tags: ["rir", "chorar", "moderno", "scifi", "padrao"] 
+  },
+  { 
+    title: "A Procura da Felicidade", 
+    desc: "Um pai solteiro luta contra a pobreza extrema para dar um futuro melhor ao filho. Uma lição de resiliência e choro garantido.", 
+    tags: ["chorar", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Onde os Fracos Não Têm Vez", 
+    desc: "Um homem encontra uma mala cheia de dinheiro e passa a ser caçado por um assassino implacável e silencioso.", 
+    tags: ["tenso", "cult", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Como se Fosse a Primeira Vez", 
+    desc: "Um homem precisa conquistar a mulher que ama todos os dias, pois ela perde a memória a cada noite. Engraçado e doce.", 
+    tags: ["rir", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Birdman", 
+    desc: "Um ator esquecido tenta recuperar a fama em uma peça de teatro. Filmado para parecer um único plano-sequência.", 
+    tags: ["mindfuck", "cult", "moderno", "real", "padrao"] 
+  },
+  { 
+    title: "O Pianista", 
+    desc: "A luta pela sobrevivência de um músico judeu em meio à destruição de Varsóvia na Segunda Guerra. Impactante.", 
+    tags: ["chorar", "real", "moderno", "epic"] 
+  },
+  { 
+    title: "Sociedade dos Poetas Mortos", 
+    desc: "Um professor de literatura inspira seus alunos a tornarem suas vidas extraordinárias. Carpe Diem.", 
+    tags: ["chorar", "cult", "anos90", "real", "padrao"] 
+  },
+  { 
+    title: "Enrolados", 
+    desc: "Rapunzel foge de sua torre com a ajuda de um charmoso ladrão para ver as lanternas flutuantes. Divertido e visual.", 
+    tags: ["rir", "scifi", "moderno", "padrao"] 
+  },
+  { 
+    title: "Fragmentado", 
+    desc: "Um homem com 23 personalidades diferentes sequestra três garotas. Uma performance assustadora de James McAvoy.", 
+    tags: ["tenso", "mindfuck", "moderno", "real", "padrao"] 
+  },
+  { 
+    title: "Garota, Interrompida", 
+    desc: "A vida de jovens mulheres em um hospital psiquiátrico nos anos 60. Intenso e focado em atuações brilhantes.", 
+    tags: ["chorar", "real", "anos90", "cult", "padrao"] 
+  },
+  { 
+    title: "O Grande Ditador", 
+    desc: "Charles Chaplin satiriza o nazismo em um filme que equilibra comédia pastelão com um discurso final poderoso.", 
+    tags: ["rir", "cult", "real", "padrao"] 
+  },
+  { 
+    title: "V de Vingança", 
+    desc: "Em uma Inglaterra tirânica, um justiceiro mascarado planeja derrubar o governo com a ajuda de uma jovem.", 
+    tags: ["tenso", "cult", "moderno", "scifi", "padrao"] 
+  },
+  { 
+    title: "Soul", 
+    desc: "Um músico de jazz sofre um acidente e viaja para um lugar onde as almas descobrem suas paixões. Uma obra reflexiva da Pixar.", 
+    tags: ["rir", "chorar", "moderno", "scifi", "padrao"] 
+  },
+  { 
+    title: "Legalmente Loira", 
+    desc: "Uma jovem decide cursar Harvard para provar que é muito mais do que apenas uma loira fútil. Icônico e engraçado.", 
+    tags: ["rir", "moderno", "real", "padrao", "cult"] 
+  },
+  { 
+    title: "Gran Torino", 
+    desc: "Um veterano de guerra ranzinza decide ajudar um vizinho coreano a enfrentar uma gangue local. Redenção emocionante.", 
+    tags: ["chorar", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Blade Runner: O Caçador de Androides", 
+    desc: "O clássico de 1982. Um detetive caça replicantes fugitivos em uma Los Angeles chuvosa e neon. O pai do cyberpunk.", 
+    tags: ["scifi", "cult", "anos90", "padrao"] 
+  },
+  { 
+    title: "A Escolha Perfeita", 
+    desc: "Um grupo de acapella universitário tenta chegar ao topo das competições. Ritmo musical e muita comédia.", 
+    tags: ["rir", "moderno", "real", "padrao"] 
+  },
+  { 
+    title: "Zootopia: Essa Cidade é o Bicho", 
+    desc: "Uma coelha policial e uma raposa vigarista precisam resolver um mistério que ameaça a paz da cidade animal.", 
+    tags: ["rir", "scifi", "moderno", "padrao"] 
+  },
+  { 
+    title: "Ela (Her)", 
+    desc: "Um homem solitário se apaixona pelo sistema operacional de seu computador. Uma reflexão linda sobre o amor e a tecnologia.", 
+    tags: ["chorar", "scifi", "moderno", "cult", "padrao"] 
+  },
+  { 
+    title: "O Labirinto", 
+    desc: "Uma jovem tem que atravessar um labirinto mágico para salvar seu irmão das mãos do Rei dos Goblins. Estética fantástica.", 
+    tags: ["scifi", "cult", "anos90", "padrao"] 
+  },
+  { 
+    title: "Sexta-Feira 13", 
+    desc: "Um grupo de monitores de acampamento é caçado por um assassino misterioso perto de Crystal Lake. O slasher clássico.", 
+    tags: ["tenso", "cult", "real", "padrao"] 
+  },
+  { 
+    title: "Diário de um Adolescente", 
+    desc: "Um jovem jogador de basquete entra no mundo das drogas em uma descida brutal e realista. Atuação pesada de DiCaprio jovem.", 
+    tags: ["chorar", "real", "anos90", "padrao"] 
+  },
+  { 
+    title: "Spotlight: Segredos Revelados", 
+    desc: "A equipe de investigação do jornal Boston Globe revela um escândalo chocante de abuso dentro da Igreja Católica.", 
+    tags: ["tenso", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "O Chamado", 
+    desc: "Quem assiste a uma fita amaldiçoada morre em sete dias. Um dos terrores psicológicos mais impactantes dos anos 2000.", 
+    tags: ["tenso", "moderno", "real", "padrao"] 
+  },
+  { 
+    title: "Diários de Motocicleta", 
+    desc: "A jornada de Che Guevara pela América Latina antes da revolução, descobrindo as injustiças sociais do continente.", 
+    tags: ["real", "moderno", "cult", "padrao"] 
+  },
+  { 
+    title: "Extraordinário", 
+    desc: "Um garoto com deformidade facial entra na escola pela primeira vez e ensina a todos sobre empatia e amizade.", 
+    tags: ["chorar", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Operação Big Hero", 
+    desc: "Um jovem prodígio da robótica cria um laço especial com um robô inflável gigante chamado Baymax. Ação e emoção pura.", 
+    tags: ["rir", "chorar", "scifi", "moderno", "padrao"] 
+  },
+  { 
+    title: "Snatch: Porcos e Diamantes", 
+    desc: "Lutadores de boxe clandestino, ladrões de joias e mafiosos se cruzam em uma confusão frenética em Londres.", 
+    tags: ["rir", "tenso", "cult", "real", "padrao"] 
+  },
+  { 
+    title: "Um Amor para Recordar", 
+    desc: "O garoto rebelde da escola se apaixona pela filha do pastor, sem saber que ela guarda um segredo triste.", 
+    tags: ["chorar", "real", "moderno", "padrao"] 
+  },
+  { 
+    title: "Minority Report: A Nova Lei", 
+    desc: "No futuro, crimes são previstos antes de acontecerem, até que o próprio capitão da polícia é acusado de um assassinato futuro.", 
+    tags: ["tenso", "scifi", "moderno", "padrao"] 
+  },
+  { 
+    title: "Sociedade da Neve", 
+    desc: "O relato visceral e emocionante dos sobreviventes de um acidente aéreo nos Andes que precisaram do impossível para viver.", 
+    tags: ["tenso", "chorar", "real", "moderno", "epic"] 
+  },
+  { 
+    title: "A Criada", 
+    desc: "Uma golpista é contratada como criada para uma herdeira japonesa, mas as reviravoltas e o clima são intensos. Cinema coreano genial.", 
+    tags: ["mindfuck", "tenso", "cult", "moderno", "real"] 
+  },
+  { 
+    title: "A Morte te Dá Parabéns", 
+    desc: "Uma jovem fica presa em um loop temporal onde é morta no seu aniversário e precisa descobrir o assassino para escapar.", 
+    tags: ["rir", "tenso", "moderno", "scifi", "curto"] 
   }
