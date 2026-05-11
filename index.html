@@ -437,58 +437,72 @@
 </section>
 
 <style>
-  .rec-container {
+  .rec-container-stack {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 64px;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
     background: var(--pf-dark-2);
     border-top: 1px solid rgba(229,9,20,0.15);
     border-bottom: 1px solid rgba(229,9,20,0.15);
+    padding: 100px 48px; 
+    gap: 56px; 
   }
-  .rec-text {
-    flex: 1;
-    min-width: 300px;
-  }
-  .rec-image-wrap {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .rec-img {
+  
+  .rec-image-stack-wrap {
     width: 100%;
-    max-width: 600px;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    /* Aqui é onde fazemos aquele corte arredondado igual a sua foto de referência */
-    border-radius: 160px 8px 8px 8px; 
-    border: 2px solid var(--pf-dark-4);
-    box-shadow: -15px 15px 0px rgba(229,9,20,0.6); /* Sombra vermelha Peak Fiction */
+    display: flex;
+    justify-content: center; 
   }
+  
+  .rec-img-stack {
+    width: 100%;
+    max-width: 750px; 
+    aspect-ratio: 16/9; 
+    object-fit: cover;
+    border-radius: 120px 8px 8px 8px; 
+    border: 2px solid var(--pf-dark-4);
+    box-shadow: -20px 20px 0px rgba(229,9,20,0.6); 
+  }
+  
+  .rec-text-stack {
+    max-width: 900px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
   @media (max-width: 768px) {
-    .rec-container { flex-direction: column; text-align: center; gap: 40px; }
-    .rec-image-wrap { justify-content: center; }
-    .rec-img { border-radius: 80px 8px 8px 8px; }
+    .rec-container-stack { padding: 64px 20px; gap: 40px; }
+    .rec-img-stack { 
+      border-radius: 60px 8px 8px 8px; 
+      box-shadow: -10px 10px 0px rgba(229,9,20,0.6); 
+    }
   }
 </style>
 
-<section id="featured" class="rec-container">
-  <div class="rec-text animate-target">
-    <p class="section-tag">Inteligência Artificial Peak Fiction</p>
-    <h2 class="section-title" style="margin-bottom: 24px; font-size: clamp(32px, 4vw, 54px);">
+<section id="featured" class="rec-container-stack">
+  
+  <div class="rec-image-stack-wrap animate-target">
+    <img class="rec-img-stack" src="assets/img/capas/ia-banner.jfif" alt="Descubra seu filme ideal" loading="lazy">
+  </div>
+  
+  <div class="rec-text-stack animate-target">
+    <p class="section-tag" style="margin-bottom: 20px;">Curadoria Peak Fiction</p>
+    
+    <h2 class="section-title" style="margin-bottom: 28px; font-size: clamp(36px, 5.5vw, 68px); max-width: 95%;">
       INDICAMOS O FILME IDEAL PARA VOCÊ!
     </h2>
-    <p class="section-subtitle" style="margin-bottom: 36px; font-size: 16px; line-height: 1.8; color: var(--pf-gray-mid);">
-      Não sabe o que assistir hoje? Nossa Inteligência Artificial analisa o seu perfil, seu humor atual e o mercado cinematográfico para sugerir até 3 obras (Filmes, Séries ou Animes) que vão explodir a sua mente.
+    
+    <p class="section-subtitle" style="margin-bottom: 44px; font-size: 19px; line-height: 1.8; color: var(--pf-gray-mid); max-width: 95%;">
+      Não sabe o que assistir hoje? Esqueça a frustração de passar horas rolando o catálogo e acabar não escolhendo nada. Descubra a obra perfeita para o seu momento e se prepare para um verdadeiro Absolute Cinema.
     </p>
-    <a href="quiz.html" class="btn-primary" style="padding: 18px 44px; font-size: 16px;">
-      <i class="fas fa-brain" style="margin-right: 8px;"></i> DESCUBRA AGORA
+    
+    <a href="quiz.html" class="btn-primary" style="padding: 20px 64px; font-size: 16px; width: fit-content; letter-spacing: 0.15em;">
+      DESCUBRA
     </a>
   </div>
-  <div class="rec-image-wrap animate-target">
-    <img class="rec-img" src="./assets/img/banners/ia-banner.jfif" alt="Descubra seu filme ideal com IA" loading="lazy">
-  </div>
+  
 </section>
 
 <!-- ===== CATEGORIES (Section 3) ===== -->
