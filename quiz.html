@@ -71,39 +71,39 @@
         console.log("O Quiz foi iniciado com sucesso!"); // Se aparecer no console, o código rodou.
 
         const questions = [
-          {
-            question: "Como está a sua energia neste exato momento?",
-            options: [
-              { text: "Quero fritar a minha mente e ficar pensando no filme depois.", tag: "mindfuck" },
-              { text: "Quero ação, tensão e suar frio no sofá.", tag: "tenso" },
-              { text: "Tô cansado, quero relaxar, rir e ver loucura.", tag: "rir" },
-              { text: "Quero uma jornada emocional, até chorar se for preciso.", tag: "chorar" }
-            ]
-          },
-          {
-            question: "Quanto tempo e paciência você tem hoje?",
-            options: [
-              { text: "Direto ao ponto, ritmo frenético.", tag: "curto" },
-              { text: "Tempo normal, um filme padrão de 2 horinhas.", tag: "padrao" },
-              { text: "Tenho tempo de sobra. Manda um épico gigante.", tag: "epic" }
-            ]
-          },
-          {
-            question: "Qual estética de cinema mais te atrai?",
-            options: [
-              { text: "CGI absurdo, fotografia moderna e limpa.", tag: "moderno" },
-              { text: "Nostalgia suja dos Anos 80/90.", tag: "anos90" },
-              { text: "Clássicos cult e diálogos afiados.", tag: "cult" }
-            ]
-          },
-          {
-            question: "Você quer fugir da realidade ou ver coisas baseadas nela?",
-            options: [
-              { text: "Fugir 100%. Ficção Científica, Fantasia, outro mundo.", tag: "scifi" },
-              { text: "Quero coisas baseadas no mundo real (crime, drama, história).", tag: "real" }
-            ]
-          }
-        ];
+      {
+        question: "Fala a verdade pra mim: como tá a sua vibe agora?",
+        options: [
+          { text: "Quero uma parada que frite minha mente e me deixe pensando por dias.", tag: "mindfuck" },
+          { text: "Quero tensão pura. Aquele filme que te faz suar frio no sofá.", tag: "tenso" },
+          { text: "Dia longo... só quero desligar o cérebro, dar umas risadas e relaxar.", tag: "rir" },
+          { text: "Tô a fim de uma jornada emocional absurda. Pode mandar até chorar.", tag: "chorar" }
+        ]
+      },
+      {
+        question: "E como estamos de tempo pra essa sessão?",
+        options: [
+          { text: "Paciência zero hoje. Manda algo direto ao ponto e frenético.", tag: "curto" },
+          { text: "O tempo clássico. Umas duas horinhas de filme tá perfeito.", tag: "padrao" },
+          { text: "Tô com tempo de sobra. Pode mandar aquele épico gigante.", tag: "epic" }
+        ]
+      },
+      {
+        question: "Visualmente, o que prende a sua atenção na tela?",
+        options: [
+          { text: "CGI de cair o queixo, fotografia impecável e visual moderno.", tag: "moderno" },
+          { text: "Aquela nostalgia e textura suja clássica dos anos 80 e 90.", tag: "anos90" },
+          { text: "Diálogos afiados, fotografia crua e clima de filme Cult.", tag: "cult" }
+        ]
+      },
+      {
+        question: "Pra fechar: pra qual universo a gente vai viajar hoje?",
+        options: [
+          { text: "Me tira daqui. Quero ficção científica, fantasia e mundos irreais.", tag: "scifi" },
+          { text: "Quero algo pé no chão. Crime, máfia, drama ou histórias reais.", tag: "real" }
+        ]
+      }
+    ];
 
         let currentQ = 0;
         let userTags = [];
