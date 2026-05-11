@@ -858,3 +858,4 @@ const movieDatabase = [
     desc: "Uma jovem fica presa em um loop temporal onde é morta no seu aniversário e precisa descobrir o assassino para escapar.", 
     tags: ["rir", "tenso", "moderno", "scifi", "curto"] 
   }
+  ];
