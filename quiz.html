@@ -67,34 +67,120 @@
   <script src="assets/js/banco-de-filmes.js"></script>
 
   <script>
-    // As perguntas que o usuário vai responder
-    const questions = [
-      {
-        question: "Como está a sua energia neste exato momento?",
-        options: [
-          { text: "Quero fritar a minha mente e ficar pensando no filme depois.", tag: "mindfuck" },
-          { text: "Quero ação, tensão e suar frio no sofá.", tag: "tenso" },
-          { text: "Tô cansado, quero relaxar, rir e ver loucura.", tag: "rir" },
-          { text: "Quero uma jornada emocional, até chorar se for preciso.", tag: "chorar" }
-        ]
-      },
-      {
-        question: "Quanto tempo e paciência você tem hoje?",
-        options: [
-          { text: "Direto ao ponto, ritmo frenético.", tag: "curto" },
-          { text: "Tempo normal, um filme padrão de 2 horinhas.", tag: "padrao" },
-          { text: "Tenho tempo de sobra. Manda um épico gigante.", tag: "epic" }
-        ]
-      },
-      {
-        question: "Qual estética de cinema mais te atrai?",
-        options: [
-          { text: "CGI absurdo, fotografia moderna e limpa.", tag: "moderno" },
-          { text: "Nostalgia suja dos Anos 80/90.", tag: "anos90" },
-          { text: "Clássicos cult e diálogos afiados.", tag: "cult" }
-        ]
-      },
-      {
-        question: "Você quer fugir da realidade ou ver coisas baseadas nela?",
-        options: [
-          { text: "Fugir 100%. Ficção Científica,
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("O Quiz foi iniciado com sucesso!"); // Se aparecer no console, o código rodou.
+
+        const questions = [
+          {
+            question: "Como está a sua energia neste exato momento?",
+            options: [
+              { text: "Quero fritar a minha mente e ficar pensando no filme depois.", tag: "mindfuck" },
+              { text: "Quero ação, tensão e suar frio no sofá.", tag: "tenso" },
+              { text: "Tô cansado, quero relaxar, rir e ver loucura.", tag: "rir" },
+              { text: "Quero uma jornada emocional, até chorar se for preciso.", tag: "chorar" }
+            ]
+          },
+          {
+            question: "Quanto tempo e paciência você tem hoje?",
+            options: [
+              { text: "Direto ao ponto, ritmo frenético.", tag: "curto" },
+              { text: "Tempo normal, um filme padrão de 2 horinhas.", tag: "padrao" },
+              { text: "Tenho tempo de sobra. Manda um épico gigante.", tag: "epic" }
+            ]
+          },
+          {
+            question: "Qual estética de cinema mais te atrai?",
+            options: [
+              { text: "CGI absurdo, fotografia moderna e limpa.", tag: "moderno" },
+              { text: "Nostalgia suja dos Anos 80/90.", tag: "anos90" },
+              { text: "Clássicos cult e diálogos afiados.", tag: "cult" }
+            ]
+          },
+          {
+            question: "Você quer fugir da realidade ou ver coisas baseadas nela?",
+            options: [
+              { text: "Fugir 100%. Ficção Científica, Fantasia, outro mundo.", tag: "scifi" },
+              { text: "Quero coisas baseadas no mundo real (crime, drama, história).", tag: "real" }
+            ]
+          }
+        ];
+
+        let currentQ = 0;
+        let userTags = [];
+
+        const qText = document.getElementById('question-text');
+        const optContainer = document.getElementById('options-container');
+        const progress = document.getElementById('progress');
+        const qContainer = document.getElementById('question-container');
+        const loadBox = document.getElementById('loading');
+        const resBox = document.getElementById('results');
+        const movList = document.getElementById('movies-list');
+
+        function renderQuestion() {
+          if (currentQ >= questions.length) { calculateResults(); return; }
+          
+          const q = questions[currentQ];
+          qText.textContent = q.question;
+          optContainer.innerHTML = '';
+          progress.style.width = ((currentQ / questions.length) * 100) + "%";
+
+          q.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = opt.text;
+            btn.onclick = () => {
+              userTags.push(opt.tag);
+              currentQ++;
+              renderQuestion();
+            };
+            optContainer.appendChild(btn);
+          });
+        }
+
+        function calculateResults() {
+          qContainer.style.display = 'none';
+          progress.style.width = '100%';
+          loadBox.style.display = 'flex';
+
+          if (typeof movieDatabase === 'undefined' || movieDatabase.length === 0) {
+            setTimeout(() => {
+              loadBox.style.display = 'none';
+              resBox.style.display = 'block';
+              movList.innerHTML = '<p style="text-align:center; color: var(--pf-gray);">Erro: O banco de dados (banco-de-filmes.js) está vazio ou não conectou.</p>';
+            }, 2000);
+            return;
+          }
+
+          movieDatabase.forEach(movie => {
+            movie.score = 0;
+            if(movie.tags) {
+               movie.tags.forEach(t => { if (userTags.includes(t)) movie.score++; });
+            }
+          });
+
+          const topMovies = movieDatabase.sort((a, b) => b.score - a.score).slice(0, 3);
+
+          setTimeout(() => {
+            loadBox.style.display = 'none';
+            resBox.style.display = 'block';
+            
+            topMovies.forEach(m => {
+              movList.innerHTML += `
+                <div class="movie-card">
+                  <div class="movie-info">
+                    <h3>${m.title}</h3>
+                    <p>${m.desc}</p>
+                    <span class="movie-tags">${m.tags.join(' • ')}</span>
+                  </div>
+                </div>
+              `;
+            });
+          }, 3000); 
+        }
+
+        // Dá o pontapé inicial
+        renderQuestion();
+    });
+  </script>
+</body>
+</html>
