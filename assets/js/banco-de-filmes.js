@@ -505,7 +505,7 @@ const movieDatabase = [
   },
   { 
     title: "Titanic", 
-    desc: "O romance proibido a bordo do navio "inafundável" que chocou o mundo. Uma das maiores bilheterias da história.", 
+    desc: "O romance proibido a bordo do navio 'inafundável' que chocou o mundo. Uma das maiores bilheterias da história.", 
     tags: ["epic", "chorar", "anos90", "real"] 
   },
   { 
