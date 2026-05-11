@@ -437,45 +437,37 @@
 </section>
 
 <style>
-  .rec-container-stack {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
-    background: var(--pf-dark-2);
-    border-top: 1px solid rgba(229,9,20,0.15);
-    border-bottom: 1px solid rgba(229,9,20,0.15);
-    padding: 140px 48px; 
-  }
-  
-  .rec-text-stack {
-    max-width: 900px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-  }
-  
-  @media (max-width: 768px) {
-    .rec-container-stack { padding: 80px 20px; }
-  }
-  /* Fix para a imagem imersiva do Sobre Nós (Peak Fiction) */
+  /* Ajuste para o Banner Vertical do Sobre Nós */
+#about .about-container {
+  display: flex;
+  align-items: center; /* Centraliza o texto verticalmente ao lado da imagem */
+  gap: 40px;
+}
+
 #about .about-img {
-  aspect-ratio: 21 / 9; 
-  width: 100%;
-  height: auto;
+  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: var(--pf-dark);
 }
 
 #about .about-img img {
   width: 100%;
-  height: 100%;
-  object-fit: contain; 
-  object-position: center bottom;
-  padding: 20px 0;
+  max-width: 450px; /* Define uma largura boa para ela não dominar o site todo */
+  height: auto;
+  max-height: 85vh; /* Garante que ela não fique maior que a tela do usuário */
+  object-fit: contain; /* Mostra a imagem INTEIRA, sem cortes */
+  border-radius: 8px; /* Um leve toque arredondado nas bordas */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
+}
+
+/* Ajuste para Celular */
+@media (max-width: 768px) {
+  #about .about-container {
+    flex-direction: column; /* No celular, o texto fica em cima e a imagem embaixo */
+  }
+  #about .about-img img {
+    max-height: 70vh;
+  }
 }
 </style>
 
