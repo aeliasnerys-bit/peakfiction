@@ -459,6 +459,16 @@
   }
 }
 
+#about .about-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  /* AS DUAS LINHAS MÁGICAS ABAIXO: */
+  image-rendering: -webkit-optimize-contrast; /* Melhora a nitidez em navegadores Chrome/Opera */
+  max-width: 600px; /* Garante que ela não cresça além do necessário */
+}
+
 </style>
 
 <section id="featured" class="rec-container-stack">
