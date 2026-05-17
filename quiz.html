@@ -35,8 +35,11 @@
     .movie-info p { font-size: 15px; color: var(--pf-gray); margin-bottom: 12px; line-height: 1.6; }
     .movie-tags { font-size: 12px; color: var(--pf-red); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(229,9,20,0.1); padding: 4px 8px; border-radius: 4px; }
     
-    .btn-voltar { display: inline-block; margin-top: 32px; background: var(--pf-red); color: white; padding: 18px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center; width: 100%; letter-spacing: 2px; transition: background 0.2s; }
+    .result-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .btn-voltar { display: inline-block; background: var(--pf-red); color: white; padding: 18px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center; width: 100%; letter-spacing: 2px; transition: background 0.2s; }
     .btn-voltar:hover { background: #B20710; }
+    .btn-refazer { display: inline-block; background: transparent; color: var(--pf-gray); padding: 16px 24px; border: 2px solid var(--pf-dark-4); border-radius: 4px; font-weight: bold; text-align: center; width: 100%; letter-spacing: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s; font-size: 14px; }
+    .btn-refazer:hover { border-color: var(--pf-red); color: var(--pf-white); }
   </style>
 </head>
 <body>
@@ -60,7 +63,10 @@
     <div id="results">
       <h2 style="font-family: 'Bebas Neue'; font-size: 36px; text-align: center; margin-bottom: 32px; letter-spacing: 1px;">SEU ABSOLUTE CINEMA É:</h2>
       <div id="movies-list"></div>
-      <a href="index.html" class="btn-voltar">VOLTAR PARA A LOJA</a>
+      <div class="result-actions">
+        <button class="btn-refazer" id="btn-refazer">REFAZER O QUIZ</button>
+        <a href="index.html" class="btn-voltar">VOLTAR PARA A LOJA</a>
+      </div>
     </div>
   </div>
 
@@ -182,7 +188,15 @@
           }, 3000); 
         }
 
-        // Dá o pontapé inicial
+        document.getElementById('btn-refazer').addEventListener('click', () => {
+          currentQ = 0;
+          userTags = [];
+          movList.innerHTML = '';
+          resBox.style.display = 'none';
+          qContainer.style.display = 'block';
+          renderQuestion();
+        });
+
         renderQuestion();
     });
   </script>
