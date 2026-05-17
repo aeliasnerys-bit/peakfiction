@@ -208,12 +208,12 @@ const movieDatabase = [
     desc: "Um ogro antissocial e um burro falante precisam resgatar uma princesa. A sátira de contos de fadas que mudou a comédia.", 
     tags: ["rir", "scifi", "moderno", "padrao", "cult"] 
   },
-  { 
-    title: "Fragmentado", 
-    desc: "Três garotas são sequestradas por um homem que tem 23 personalidades diferentes vivendo dentro da sua mente.", 
-    tags: ["tenso", "mindfuck", "moderno", "real", "padrao"] 
+  {
+    title: "Fragmentado",
+    desc: "Um homem com 23 personalidades diferentes sequestra três garotas. Uma performance assustadora de James McAvoy.",
+    tags: ["tenso", "mindfuck", "moderno", "real", "padrao"]
   },
-  { 
+  {
     title: "Kill Bill: Volume 1", 
     desc: "A Noiva acorda de um coma e vai atrás da equipe de assassinos que a traiu no dia do seu casamento. Muito sangue e espadas samurais.", 
     tags: ["tenso", "moderno", "cult", "real", "padrao"] 
@@ -328,10 +328,10 @@ const movieDatabase = [
     desc: "Um bilionário arrogante constrói uma armadura superpoderosa para escapar do cativeiro. O filme que deu origem ao UCM.", 
     tags: ["rir", "tenso", "moderno", "scifi", "padrao"] 
   },
-  { 
-    title: "Ratatouille", 
-    desc: "Um rato de esgoto com paladar refinado sonha em se tornar um grande chef de cozinha em Paris.", 
-    tags: ["rir", "moderno", "scifi", "padrao"] 
+  {
+    title: "Ratatouille",
+    desc: "Um rato de esgoto com paladar refinado sonha em se tornar um grande chef de cozinha em Paris.",
+    tags: ["rir", "moderno", "scifi", "curto"]
   },
   { 
     title: "Meninas Malvadas", 
@@ -348,17 +348,12 @@ const movieDatabase = [
     desc: "Uma atriz chama dois padres para ajudar sua filha que parece estar dominada por uma entidade demoníaca assustadora.", 
     tags: ["tenso", "cult", "real", "padrao"] 
   },
-  { 
-    title: "Jurassic Park: O Parque dos Dinossauros", 
-    desc: "Um parque de diversões com dinossauros clonados sai de controle. Ação épica com um pezinho no suspense.", 
-    tags: ["tenso", "epic", "anos90", "scifi", "padrao"] 
+  {
+    title: "Jurassic Park: O Parque dos Dinossauros",
+    desc: "Um parque de diversões com dinossauros clonados sai de controle. Ação épica com um pezinho no suspense.",
+    tags: ["tenso", "epic", "anos90", "scifi", "padrao"]
   },
-  { 
-    title: "Jurassic Park: O Parque dos Dinossauros", 
-    desc: "Um parque de diversões com dinossauros clonados sai de controle. Ação épica com um pezinho no suspense.", 
-    tags: ["tenso", "epic", "anos90", "scifi", "padrao"] 
-  },
-  { 
+  {
     title: "O Poderoso Chefão", 
     desc: "A ascensão e a queda da família Corleone. A maior obra-prima sobre máfia, poder e lealdade já feita no cinema.", 
     tags: ["tenso", "epic", "cult", "real"] 
@@ -618,12 +613,7 @@ const movieDatabase = [
     desc: "O cotidiano brutal do BOPE no Rio de Janeiro. Ação tática nacional, realista e extremamente intensa.", 
     tags: ["tenso", "real", "cult", "padrao"] 
   },
-  { 
-    title: "Ratatouille", 
-    desc: "Um ratinho com talento culinário prova que qualquer um pode cozinhar. Uma animação deliciosa e inspiradora.", 
-    tags: ["rir", "moderno", "scifi", "curto"] 
-  },
-  { 
+  {
     title: "O Destino de uma Nação", 
     desc: "Winston Churchill precisa decidir entre negociar com Hitler ou lutar contra todas as probabilidades. Atuação histórica.", 
     tags: ["tenso", "real", "moderno", "padrao"] 
@@ -638,12 +628,7 @@ const movieDatabase = [
     desc: "Um segurança descobre que é o único sobrevivente de um acidente de trem sem um arranhão sequer. Heróis de um jeito real.", 
     tags: ["mindfuck", "tenso", "cult", "scifi", "padrao"] 
   },
-  { 
-    title: "Ratatouille", 
-    desc: "Um ratinho com talento culinário prova que qualquer um pode cozinhar. Uma animação deliciosa e inspiradora.", 
-    tags: ["rir", "moderno", "scifi", "curto"] 
-  },
-  { 
+  {
     title: "Corrente do Mal", 
     desc: "Algo te persegue após um encontro amoroso. Um terror moderno de tirar o fôlego e com uma trilha sonora hipnótica.", 
     tags: ["tenso", "moderno", "cult", "padrao"] 
@@ -733,12 +718,7 @@ const movieDatabase = [
     desc: "Rapunzel foge de sua torre com a ajuda de um charmoso ladrão para ver as lanternas flutuantes. Divertido e visual.", 
     tags: ["rir", "scifi", "moderno", "padrao"] 
   },
-  { 
-    title: "Fragmentado", 
-    desc: "Um homem com 23 personalidades diferentes sequestra três garotas. Uma performance assustadora de James McAvoy.", 
-    tags: ["tenso", "mindfuck", "moderno", "real", "padrao"] 
-  },
-  { 
+  {
     title: "Garota, Interrompida", 
     desc: "A vida de jovens mulheres em um hospital psiquiátrico nos anos 60. Intenso e focado em atuações brilhantes.", 
     tags: ["chorar", "real", "anos90", "cult", "padrao"] 
