@@ -6,7 +6,7 @@ const movieDatabase = [
   { 
     title: "Interestelar", 
     desc: "Uma jornada absurda pelo buraco negro do espaço-tempo para salvar a humanidade. Visual indescritível e trilha sonora que arrepia a alma.", 
-    tags: ["epic", "scifi", "chorar", "moderno"] 
+    tags: ["epico", "scifi", "chorar", "moderno"] 
   },
   { 
     title: "Clube da Luta", 
@@ -31,7 +31,7 @@ const movieDatabase = [
   { 
     title: "Blade Runner 2049", 
     desc: "O que nos faz humanos? Uma obra de arte visual absoluta ambientada em um futuro cyberpunk opressivo e melancólico.", 
-    tags: ["epic", "scifi", "chorar", "moderno"] 
+    tags: ["epico", "scifi", "chorar", "moderno"] 
   },
   { 
     title: "O Show de Truman", 
@@ -86,17 +86,17 @@ const movieDatabase = [
   { 
     title: "Django Livre", 
     desc: "Um escravo liberto se une a um caçador de recompensas para resgatar sua esposa. Quentin Tarantino no ápice da violência e humor.", 
-    tags: ["rir", "tenso", "epic", "moderno", "cult", "real"] 
+    tags: ["rir", "tenso", "epico", "moderno", "cult", "real"] 
   },
   { 
     title: "Duna", 
     desc: "Intrigas políticas, vermes da areia gigantes e um planeta desértico letal. Um épico imensurável de ficção científica.", 
-    tags: ["epic", "scifi", "moderno"] 
+    tags: ["epico", "scifi", "moderno"] 
   },
   { 
     title: "O Lobo de Wall Street", 
     desc: "Ascensão rápida, dinheiro infinito, drogas e caos total na bolsa de valores. A vida insana de Jordan Belfort.", 
-    tags: ["rir", "epic", "moderno", "real", "cult"] 
+    tags: ["rir", "epico", "moderno", "real", "cult"] 
   },
   { 
     title: "A Ilha do Medo (Shutter Island)", 
@@ -106,12 +106,12 @@ const movieDatabase = [
   { 
     title: "O Cavaleiro das Trevas", 
     desc: "O caos toma conta de Gotham quando o Coringa decide testar os limites morais do Batman. O ápice dos filmes de heróis.", 
-    tags: ["tenso", "epic", "moderno", "real"] 
+    tags: ["tenso", "epico", "moderno", "real"] 
   },
   { 
     title: "Homem-Aranha no Aranhaverso", 
     desc: "Múltiplas dimensões se chocam nesta obra-prima da animação. Visualmente deslumbrante e com uma trilha sonora absurda.", 
-    tags: ["rir", "epic", "moderno", "scifi", "padrao"] 
+    tags: ["rir", "epico", "moderno", "scifi", "padrao"] 
   },
   { 
     title: "Hereditário", 
@@ -136,12 +136,12 @@ const movieDatabase = [
   { 
     title: "O Senhor dos Anéis: A Sociedade do Anel", 
     desc: "O início da maior jornada da história do cinema. Magia, guerras épicas e um anel para a todos governar.", 
-    tags: ["epic", "scifi", "padrao", "cult"] 
+    tags: ["epico", "scifi", "padrao", "cult"] 
   },
   { 
     title: "Gladiador", 
     desc: "Um general romano é traído e se torna um escravo gladiador em busca de vingança. Épico, visceral e emocionante.", 
-    tags: ["epic", "tenso", "chorar", "real", "padrao"] 
+    tags: ["epico", "tenso", "chorar", "real", "padrao"] 
   },
   { 
     title: "Toy Story", 
@@ -171,12 +171,12 @@ const movieDatabase = [
   { 
     title: "Vingadores: Guerra Infinita", 
     desc: "O vilão Thanos está coletando as Joias do Infinito e todos os heróis do universo precisam impedi-lo. Ação ininterrupta.", 
-    tags: ["epic", "tenso", "scifi", "moderno"] 
+    tags: ["epico", "tenso", "scifi", "moderno"] 
   },
   { 
     title: "O Resgate do Soldado Ryan", 
     desc: "Durante a Segunda Guerra, um esquadrão arrisca tudo para salvar um único soldado. A cena da praia de Omaha é um marco do cinema.", 
-    tags: ["tenso", "epic", "chorar", "anos90", "real"] 
+    tags: ["tenso", "epico", "chorar", "anos90", "real"] 
   },
   { 
     title: "As Branquelas", 
@@ -201,7 +201,7 @@ const movieDatabase = [
   { 
     title: "O Exterminador do Futuro 2", 
     desc: "Um ciborgue viaja no tempo para proteger o futuro líder da resistência humana. Ação impecável e efeitos à frente do tempo.", 
-    tags: ["tenso", "epic", "anos90", "scifi", "padrao"] 
+    tags: ["tenso", "epico", "anos90", "scifi", "padrao"] 
   },
   { 
     title: "Shrek", 
@@ -231,7 +231,7 @@ const movieDatabase = [
   { 
     title: "Cidade de Deus", 
     desc: "O crime e a sobrevivência em uma das favelas mais perigosas do Rio de Janeiro. Uma obra-prima visceral e nacional.", 
-    tags: ["tenso", "epic", "moderno", "real", "cult"] 
+    tags: ["tenso", "epico", "moderno", "real", "cult"] 
   },
   { 
     title: "De Volta para o Futuro", 
@@ -261,7 +261,7 @@ const movieDatabase = [
   { 
     title: "A Viagem de Chihiro", 
     desc: "Uma garota entra em um mundo mágico habitado por deuses, bruxas e espíritos. O auge absoluto do Studio Ghibli.", 
-    tags: ["mindfuck", "scifi", "cult", "padrao", "epic"] 
+    tags: ["mindfuck", "scifi", "cult", "padrao", "epico"] 
   },
   { 
     title: "O Grande Truque", 
@@ -271,7 +271,7 @@ const movieDatabase = [
   { 
     title: "Um Sonho de Liberdade", 
     desc: "Um homem inocente é condenado à prisão perpétua e constrói amizades e esperança dentro de uma penitenciária brutal.", 
-    tags: ["chorar", "epic", "anos90", "real", "padrao"] 
+    tags: ["chorar", "epico", "anos90", "real", "padrao"] 
   },
   { 
     title: "Deadpool", 
@@ -281,7 +281,7 @@ const movieDatabase = [
   { 
     title: "Como Treinar o Seu Dragão", 
     desc: "Um jovem viking que não tem talento para caçar se torna o melhor amigo do dragão mais letal do mundo.", 
-    tags: ["epic", "scifi", "rir", "moderno", "padrao"] 
+    tags: ["epico", "scifi", "rir", "moderno", "padrao"] 
   },
   { 
     title: "Pânico (Scream)", 
@@ -306,12 +306,12 @@ const movieDatabase = [
   { 
     title: "Forrest Gump: O Contador de Histórias", 
     desc: "A vida de um homem simples que, sem querer, acaba participando dos maiores eventos históricos do século XX.", 
-    tags: ["chorar", "rir", "anos90", "real", "epic"] 
+    tags: ["chorar", "rir", "anos90", "real", "epico"] 
   },
   { 
     title: "Tudo em Todo o Lugar ao Mesmo Tempo", 
     desc: "Uma imigrante chinesa que não consegue pagar os impostos descobre que o multiverso depende dela. Caos, artes marciais e emoção.", 
-    tags: ["mindfuck", "rir", "chorar", "moderno", "scifi", "epic"] 
+    tags: ["mindfuck", "rir", "chorar", "moderno", "scifi", "epico"] 
   },
   { 
     title: "Diário de uma Paixão", 
@@ -351,17 +351,17 @@ const movieDatabase = [
   {
     title: "Jurassic Park: O Parque dos Dinossauros",
     desc: "Um parque de diversões com dinossauros clonados sai de controle. Ação épica com um pezinho no suspense.",
-    tags: ["tenso", "epic", "anos90", "scifi", "padrao"]
+    tags: ["tenso", "epico", "anos90", "scifi", "padrao"]
   },
   {
     title: "O Poderoso Chefão", 
     desc: "A ascensão e a queda da família Corleone. A maior obra-prima sobre máfia, poder e lealdade já feita no cinema.", 
-    tags: ["tenso", "epic", "cult", "real"] 
+    tags: ["tenso", "epico", "cult", "real"] 
   },
   { 
     title: "Fogo Contra Fogo (Heat)", 
     desc: "Um detetive obcecado e um mestre do roubo a bancos se enfrentam nas ruas. Tiroteios táticos incrivelmente realistas.", 
-    tags: ["tenso", "anos90", "cult", "real", "epic"] 
+    tags: ["tenso", "anos90", "cult", "real", "epico"] 
   },
   { 
     title: "O Resgate (Extraction)", 
@@ -386,12 +386,12 @@ const movieDatabase = [
   { 
     title: "O Rei Leão", 
     desc: "Um jovem leão precisa enfrentar seu tio maligno para retomar o trono. A trilha sonora e a animação são lendárias.", 
-    tags: ["epic", "chorar", "anos90", "scifi", "padrao"] 
+    tags: ["epico", "chorar", "anos90", "scifi", "padrao"] 
   },
   { 
     title: "Avatar", 
     desc: "Um soldado paraplégico é enviado ao planeta Pandora e se divide entre cumprir ordens e proteger um novo mundo.", 
-    tags: ["epic", "scifi", "moderno", "padrao"] 
+    tags: ["epico", "scifi", "moderno", "padrao"] 
   },
   { 
     title: "Gênio Indomável", 
@@ -401,12 +401,12 @@ const movieDatabase = [
   { 
     title: "Scarface", 
     desc: "A ascensão sangrenta de um refugiado cubano que se torna o maior chefão do narcotráfico em Miami.", 
-    tags: ["tenso", "anos90", "cult", "real", "epic"] 
+    tags: ["tenso", "anos90", "cult", "real", "epico"] 
   },
   { 
     title: "Vingadores: Ultimato", 
     desc: "Os heróis sobreviventes arriscam tudo em uma viagem no tempo para reverter o estalo de Thanos. O maior evento da cultura pop.", 
-    tags: ["epic", "scifi", "moderno", "chorar", "padrao"] 
+    tags: ["epico", "scifi", "moderno", "chorar", "padrao"] 
   },
   { 
     title: "Um Lugar Silencioso", 
@@ -416,7 +416,7 @@ const movieDatabase = [
   { 
     title: "Falcão Negro em Perigo", 
     desc: "Uma missão militar na Somália dá errado e soldados americanos ficam encurralados. Tensão, sobrevivência e combate urbano intenso.", 
-    tags: ["tenso", "epic", "real", "moderno"] 
+    tags: ["tenso", "epico", "real", "moderno"] 
   },
   { 
     title: "O Diabo Veste Prada", 
@@ -446,7 +446,7 @@ const movieDatabase = [
   { 
     title: "Oppenheimer", 
     desc: "O dilema moral, a política e a ciência por trás do homem que criou a bomba atômica. Um épico tenso e biográfico.", 
-    tags: ["epic", "tenso", "real", "moderno"] 
+    tags: ["epico", "tenso", "real", "moderno"] 
   },
   { 
     title: "Curtindo a Vida Adoidado", 
@@ -456,7 +456,7 @@ const movieDatabase = [
   { 
     title: "O Labirinto do Fauno", 
     desc: "Na Espanha fascista, uma garotinha descobre um mundo de fantasia sombrio e criaturas bizarras em um labirinto antigo.", 
-    tags: ["mindfuck", "epic", "cult", "scifi", "padrao"] 
+    tags: ["mindfuck", "epico", "cult", "scifi", "padrao"] 
   },
   { 
     title: "A Bruxa de Blair", 
@@ -496,12 +496,12 @@ const movieDatabase = [
   { 
     title: "Titanic", 
     desc: "O romance proibido a bordo do navio 'inafundável' que chocou o mundo. Uma das maiores bilheterias da história.", 
-    tags: ["epic", "chorar", "anos90", "real"] 
+    tags: ["epico", "chorar", "anos90", "real"] 
   },
   { 
     title: "Os Suspeitos (Prisoners)", 
     desc: "A filha de um carpinteiro desaparece e, sem respostas da polícia, ele faz justiça com as próprias mãos. Tensão absurda.", 
-    tags: ["tenso", "mindfuck", "moderno", "real", "epic"] 
+    tags: ["tenso", "mindfuck", "moderno", "real", "epico"] 
   },
   { 
     title: "Contato", 
@@ -516,7 +516,7 @@ const movieDatabase = [
   { 
     title: "À Espera de um Milagre", 
     desc: "Guardas no corredor da morte descobrem que um preso condenado por assassinato tem um dom milagroso. Destrói qualquer coração.", 
-    tags: ["chorar", "epic", "cult", "real"] 
+    tags: ["chorar", "epico", "cult", "real"] 
   },
   { 
     title: "Os Fantasmas se Divertem (Beetlejuice)", 
@@ -531,7 +531,7 @@ const movieDatabase = [
   { 
     title: "O Curioso Caso de Benjamin Button", 
     desc: "A história de um homem que nasce velho e vai rejuvenescendo com o passar dos anos, e o amor que tenta sobreviver ao tempo.", 
-    tags: ["chorar", "scifi", "moderno", "epic"] 
+    tags: ["chorar", "scifi", "moderno", "epico"] 
   },
   { 
     title: "Gravidade", 
@@ -551,12 +551,12 @@ const movieDatabase = [
   { 
     title: "Corações de Ferro (Fury)", 
     desc: "Nos últimos dias da Segunda Guerra, a tripulação de um tanque de guerra americano avança em território nazista suicida.", 
-    tags: ["tenso", "epic", "real", "moderno"] 
+    tags: ["tenso", "epico", "real", "moderno"] 
   },
   { 
     title: "1917", 
     desc: "Dois soldados britânicos precisam cruzar o território inimigo para entregar uma mensagem que salvará centenas de vidas. Filmado em um plano-sequência.", 
-    tags: ["tenso", "epic", "moderno", "real"] 
+    tags: ["tenso", "epico", "moderno", "real"] 
   },
   { 
     title: "O Grande Hotel Budapeste", 
@@ -571,7 +571,7 @@ const movieDatabase = [
   { 
     title: "Zodíaco", 
     desc: "A caçada desesperada e não resolvida a um assassino em série que brincou com a polícia e com a imprensa por anos.", 
-    tags: ["tenso", "mindfuck", "moderno", "real", "epic"] 
+    tags: ["tenso", "mindfuck", "moderno", "real", "epico"] 
   },
   { 
     title: "Simplesmente Acontece", 
@@ -606,7 +606,7 @@ const movieDatabase = [
   { 
     title: "Pantera Negra", 
     desc: "A luta por Wakanda. Um épico de super-herói com uma cultura rica, visual incrível e um vilão com motivos reais.", 
-    tags: ["epic", "moderno", "scifi", "padrao"] 
+    tags: ["epico", "moderno", "scifi", "padrao"] 
   },
   { 
     title: "Tropa de Elite", 
@@ -641,7 +641,7 @@ const movieDatabase = [
   { 
     title: "O Castelo Animado", 
     desc: "Uma jovem amaldiçoada encontra refúgio no castelo andante de um mago. Fantasia visualmente deslumbrante do Studio Ghibli.", 
-    tags: ["scifi", "epic", "cult", "padrao"] 
+    tags: ["scifi", "epico", "cult", "padrao"] 
   },
   { 
     title: "A Rede Social", 
@@ -656,7 +656,7 @@ const movieDatabase = [
   { 
     title: "Moana: Um Mar de Aventuras", 
     desc: "Uma jovem parte em uma missão ousada para salvar seu povo e descobrir sua própria identidade no oceano.", 
-    tags: ["rir", "epic", "moderno", "scifi", "padrao"] 
+    tags: ["rir", "epico", "moderno", "scifi", "padrao"] 
   },
   { 
     title: "O Piauí nas Telas (Bacurau)", 
@@ -706,7 +706,7 @@ const movieDatabase = [
   { 
     title: "O Pianista", 
     desc: "A luta pela sobrevivência de um músico judeu em meio à destruição de Varsóvia na Segunda Guerra. Impactante.", 
-    tags: ["chorar", "real", "moderno", "epic"] 
+    tags: ["chorar", "real", "moderno", "epico"] 
   },
   { 
     title: "Sociedade dos Poetas Mortos", 
@@ -826,7 +826,7 @@ const movieDatabase = [
   { 
     title: "Sociedade da Neve", 
     desc: "O relato visceral e emocionante dos sobreviventes de um acidente aéreo nos Andes que precisaram do impossível para viver.", 
-    tags: ["tenso", "chorar", "real", "moderno", "epic"] 
+    tags: ["tenso", "chorar", "real", "moderno", "epico"] 
   },
   { 
     title: "A Criada", 
